@@ -1,0 +1,9 @@
+import './admin-user';
+import './profile-edit-profile';
+import './profile-edit-password';
+import './provincium';
+import './localidad';
+import './productor';
+import './cerveza';
+import './cervecerium';
+import './punto-ventum';
