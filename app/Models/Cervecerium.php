@@ -12,7 +12,7 @@ class Cervecerium extends Model
         'localidad_id',
         'nombre',
         'provincia_id',
-        //'horario_atencion'
+        'horario_atencion'
     ];
     
     

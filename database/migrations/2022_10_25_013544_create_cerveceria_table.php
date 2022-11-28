@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('domicilio');
             $table->foreignId('provincia_id')->references('id')->on('provincia')->onDelete('cascade');
             $table->foreignId('localidad_id')->references('id')->on('localidad')->onDelete('cascade');
-            //$table->string('horario_atencion')->nullable();
+            $table->string('horario_atencion')->nullable();
             $table->timestamps();
         });
     }
