@@ -8,14 +8,12 @@ class Provincium extends Model
 {
     protected $fillable = [
         'nombre',
-    
     ];
     
     
     protected $dates = [
         'created_at',
         'updated_at',
-    
     ];
     
     protected $appends = ['resource_url'];

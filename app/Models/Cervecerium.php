@@ -12,7 +12,7 @@ class Cervecerium extends Model
         'localidad_id',
         'nombre',
         'provincia_id',
-    
+        //'horario_atencion'
     ];
     
     
@@ -22,13 +22,25 @@ class Cervecerium extends Model
     
     ];
     
-    protected $appends = ['resource_url'];
+    protected $appends = ['localidad', 'provincia', 'resource_url'];
 
     /* ************************ ACCESSOR ************************* */
 
     public function getResourceUrlAttribute()
     {
         return url('/admin/cerveceria/'.$this->getKey());
+    }
+
+    public function getProvinciaAttribute()
+    {
+        $provincia = Provincium::find($this->provincia_id);
+        return $provincia->nombre;
+    }
+
+    public function getLocalidadAttribute()
+    {
+        $localidad = Localidad::find($this->localidad_id);
+        return $localidad->nombre;
     }
 
     public function provincia() {

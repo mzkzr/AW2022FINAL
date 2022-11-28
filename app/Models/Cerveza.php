@@ -14,8 +14,7 @@ class Cerveza extends Model
         'ibu',
         'abv',
         'srm',
-        'og',
-    
+        'og'
     ];
     
     
@@ -25,13 +24,19 @@ class Cerveza extends Model
     
     ];
     
-    protected $appends = ['resource_url'];
+    protected $appends = ['productor', 'resource_url'];
 
     /* ************************ ACCESSOR ************************* */
 
     public function getResourceUrlAttribute()
     {
         return url('/admin/cervezas/'.$this->getKey());
+    }
+
+    public function getProductorAttribute()
+    {
+        $productor = Productor::find($this->productor_id);
+        return $productor->nombre;
     }
 
     public function productor() {

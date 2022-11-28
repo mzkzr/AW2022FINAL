@@ -13,24 +13,33 @@ class Productor extends Model
         'cuit',
         'domicilio',
         'provincia_id',
-        'localidad_id',
-    
+        'localidad_id'
     ];
-    
     
     protected $dates = [
         'created_at',
-        'updated_at',
-    
+        'updated_at'
     ];
     
-    protected $appends = ['resource_url'];
+    protected $appends = ['localidad', 'provincia', 'resource_url'];
 
     /* ************************ ACCESSOR ************************* */
 
     public function getResourceUrlAttribute()
     {
         return url('/admin/productors/'.$this->getKey());
+    }
+
+    public function getProvinciaAttribute()
+    {
+        $provincia = Provincium::find($this->provincia_id);
+        return $provincia->nombre;
+    }
+
+    public function getLocalidadAttribute()
+    {
+        $localidad = Localidad::find($this->localidad_id);
+        return $localidad->nombre;
     }
 
     public function provincia() {

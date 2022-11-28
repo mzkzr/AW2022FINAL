@@ -27,10 +27,10 @@ class UpdateProductor extends FormRequest
     {
         return [
             'nombre' => ['sometimes', 'string'],
-            'cuit' => ['sometimes', Rule::unique('productor', 'cuit')->ignore($this->productor->getKey(), $this->productor->getKeyName()), 'string'],
+            'cuit' => ['sometimes', Rule::unique('productor', 'cuit')->ignore($this->productor->getKey(), $this->productor->getKeyName()), 'integer'],
             'domicilio' => ['sometimes', 'string'],
-            'provincia_id' => ['sometimes', 'string'],
-            'localidad_id' => ['sometimes', 'string']
+            'provincia_id' => ['sometimes', 'integer'],
+            'localidad_id' => ['sometimes', 'integer']
         ];
     }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1bc485de5c383b02e030d2a55f176b92",
+    "content-hash": "fe746f43f3367a55b186fac697e7d54c",
     "packages": [
         {
             "name": "brackets/admin-auth",
@@ -10380,7 +10380,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.0.2"
+        "php": "^8.1"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"
