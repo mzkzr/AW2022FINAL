@@ -31,7 +31,7 @@ class UpdateCervecerium extends FormRequest
             'localidad_id' => ['sometimes', 'string'],
             'nombre' => ['sometimes', 'string'],
             'provincia_id' => ['sometimes', 'string'],
-            
+            'horario_atencion' => ['sometimes', 'string']
         ];
     }
 }

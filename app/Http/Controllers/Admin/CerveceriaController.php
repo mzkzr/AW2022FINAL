@@ -37,7 +37,7 @@ class CerveceriaController extends Controller
             $request,
 
             // set columns to query
-            ['cuit', 'domicilio', 'id', 'localidad_id', 'nombre', 'provincia_id'],
+            ['cuit', 'domicilio', 'id', 'localidad_id', 'nombre', 'provincia_id', 'horario_atencion'],
 
             // set columns to searchIn
             ['domicilio', 'id', 'nombre', 'provincia.nombre', 'localidad.nombre'],

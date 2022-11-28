@@ -118,7 +118,7 @@ return [
             'cuit' => 'Cuit',
             'domicilio' => 'Domicilio',
             'localidad_id' => 'Localidad',
-            
+            'horario_atencion' => 'Horario de atención'
         ],
     ],
 
@@ -228,7 +228,7 @@ return [
             'cuit' => 'Cuit',
             'domicilio' => 'Domicilio',
             'localidad_id' => 'Localidad',
-            
+            'horario_atencion' => 'Horario de atención'
         ],
     ],
 
@@ -248,7 +248,7 @@ return [
             'localidad_id' => 'Localidad',
             'nombre' => 'Nombre',
             'provincia_id' => 'Provincia',
-            
+            'horario_atencion' => 'Horario de atención'
         ],
     ],
 

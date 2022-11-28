@@ -14,6 +14,14 @@
     </div>
 </div>
 
+<div class="form-group row align-items-center" :class="{'has-danger': errors.has('domicilio'), 'has-success': fields.domicilio && fields.domicilio.valid }">
+    <label for="domicilio" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.cervecerium.columns.domicilio') }}</label>
+        <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
+        <input type="text" v-model="form.domicilio" v-validate="'required'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('domicilio'), 'form-control-success': fields.domicilio && fields.domicilio.valid}" id="domicilio" name="domicilio" placeholder="{{ trans('admin.cervecerium.columns.domicilio') }}">
+        <div v-if="errors.has('domicilio')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('domicilio') }}</div>
+    </div>
+</div>
+
 <div class="form-group row align-items-center" :class="{'has-danger': errors.has('provincia_id'), 'has-success': fields.provincia_id && fields.provincia_id.valid }">
     <label for="provincia_id" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.cervecerium.columns.provincia_id') }}</label>
         <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
@@ -40,11 +48,11 @@
     </div>
 </div>
 
-<div class="form-group row align-items-center" :class="{'has-danger': errors.has('domicilio'), 'has-success': fields.domicilio && fields.domicilio.valid }">
-    <label for="domicilio" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.cervecerium.columns.domicilio') }}</label>
+<div class="form-group row align-items-center" :class="{'has-danger': errors.has('horario_atencion'), 'has-success': fields.horario_atencion && fields.horario_atencion.valid }">
+    <label for="horario_atencion" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.cervecerium.columns.horario_atencion') }}</label>
         <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
-        <input type="text" v-model="form.domicilio" v-validate="'required'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('domicilio'), 'form-control-success': fields.domicilio && fields.domicilio.valid}" id="domicilio" name="domicilio" placeholder="{{ trans('admin.cervecerium.columns.domicilio') }}">
-        <div v-if="errors.has('domicilio')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('domicilio') }}</div>
+        <input type="text" v-model="form.horario_atencion" v-validate="''" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('horario_atencion'), 'form-control-success': fields.horario_atencion && fields.horario_atencion.valid}" id="horario_atencion" name="horario_atencion" placeholder="{{ trans('admin.cervecerium.columns.horario_atencion') }}">
+        <div v-if="errors.has('horario_atencion')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('horario_atencion') }}</div>
     </div>
 </div>
 

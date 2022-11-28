@@ -36,7 +36,8 @@ class CerveceriumController extends BaseController
             'cuit' => 'required',
             'domicilio' => 'required',
             'provincia_id' => 'required',
-            'localidad_id' => 'required'
+            'localidad_id' => 'required',
+            'horario_atencion'
         ]);
         if($validator->fails()){
             return $this->sendError($validator->errors());       
@@ -62,7 +63,8 @@ class CerveceriumController extends BaseController
             'cuit' => 'sometimes|required',
             'domicilio' => 'sometimes|required',
             'provincia_id' => 'sometimes|required',
-            'localidad_id' => 'sometimes|required'
+            'localidad_id' => 'sometimes|required',
+            'horario_atencion' => 'sometimes',
         ]);
         if($validator->fails()){
             return $this->sendError($validator->errors());       

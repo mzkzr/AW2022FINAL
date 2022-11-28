@@ -52,6 +52,7 @@
                                         <th is='sortable' :column="'provincia_id'">{{ trans('admin.cervecerium.columns.provincia_id') }}</th>
                                         <th is='sortable' :column="'localidad_id'">{{ trans('admin.cervecerium.columns.localidad_id') }}</th>
                                         <th is='sortable' :column="'domicilio'">{{ trans('admin.cervecerium.columns.domicilio') }}</th>
+                                        <th is='sortable' :column="'horario_atencion'">{{ trans('admin.cervecerium.columns.horario_atencion') }}</th>
 
                                         <th></th>
                                     </tr>
@@ -80,6 +81,7 @@
                                         <td>@{{ item.provincia.nombre }}</td>
                                         <td>@{{ item.localidad.nombre }}</td>
                                         <td>@{{ item.domicilio }}</td>
+                                        <td>@{{ item.horario_atencion }}</td>
                                         
                                         <td>
                                             <div class="row no-gutters">

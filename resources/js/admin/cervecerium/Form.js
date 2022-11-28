@@ -10,7 +10,7 @@ Vue.component('cervecerium-form', {
                 localidad_id:  '' ,
                 nombre:  '' ,
                 provincia_id:  '' ,
-                
+                horario_atencion:  ''
             }
         }
     }

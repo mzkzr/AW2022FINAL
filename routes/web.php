@@ -134,3 +134,18 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
         });
     });
 });
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
+    Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin/')->group(static function() {
+        Route::prefix('cerveceria')->name('cerveceria/')->group(static function() {
+            Route::get('/',                                             'CerveceriaController@index')->name('index');
+            Route::get('/create',                                       'CerveceriaController@create')->name('create');
+            Route::post('/',                                            'CerveceriaController@store')->name('store');
+            Route::get('/{cervecerium}/edit',                           'CerveceriaController@edit')->name('edit');
+            Route::post('/bulk-destroy',                                'CerveceriaController@bulkDestroy')->name('bulk-destroy');
+            Route::post('/{cervecerium}',                               'CerveceriaController@update')->name('update');
+            Route::delete('/{cervecerium}',                             'CerveceriaController@destroy')->name('destroy');
+        });
+    });
+});
