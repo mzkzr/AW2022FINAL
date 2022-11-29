@@ -10,12 +10,10 @@ Provincias
 | GET | /provincias/ | Obtener todas las provincias |
 | GET | /provincias/id | Obtener la provincia {id} |
 | POST | /provincias?_parametros_ | Crear provincia |
-| | Parámetros | |
 | | 'nombre' => 'required' | |
 | PUT | /provincias?_parametros_ | Editar provincia |
-        'nombre' => 'sometimes|required'
-
-    DELETE /provincias/id                   Eliminar provincia
+| | 'nombre' => 'sometimes|required' | |
+| DELETE | /provincias/id | Eliminar provincia |
 
 
 Localidades:
