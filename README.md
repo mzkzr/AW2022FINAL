@@ -86,7 +86,7 @@ Cervezas
 | | 'srm_max' => 'required\|integer' |
 | | 'og_min' => 'required\|integer' |
 | | 'og_max' => 'required\|integer' |
-| GET | /cervezas/_id_ | Obtener el productor {id} |
+| GET | /cervezas/_id_ | Obtener la cerveza {id} |
 | POST | /cervezas?_parametros_ | Crear cerveza |
 | | 'nombre' => 'required' | |
 | | 'abv' => 'required\|float' | |
@@ -112,7 +112,7 @@ Cervecerías
 | | 'nombre' => 'sometimes\|required' |
 | | 'provincia_id' => 'sometimes\|required\|integer' |
 | | 'localidad_id' => 'sometimes\|required\|integer' |
-| GET | /cervecerias/_id_ | Obtener el productor {id} |
+| GET | /cervecerias/_id_ | Obtener la cervecería {id} |
 | POST | /cervecerias?_parametros_ | Crear cervecería |
 | | 'nombre' => 'required' | |
 | | 'cuit' => 'required\|integer' | |
@@ -137,7 +137,7 @@ Puntos de venta
 | GET | /puntos_venta?_parametros_ | Obtener puntos de venta utilizando filtros |
 | | 'cerveza_id' => 'sometimes\|required\|integer' |
 | | 'cerveceria_id' => 'sometimes\|required\|integer' |
-| GET | /puntos_venta/_id_ | Obtener el productor {id} |
+| GET | /puntos_venta/_id_ | Obtener el punto de venta {id} |
 | POST | /puntos_venta?_parametros_ | Crear punto de venta |
 | | 'cerveza_id' => 'required\|integer' |
 | | 'cerveceria_id' => 'required\|integer' |
