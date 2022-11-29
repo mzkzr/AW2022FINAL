@@ -8,6 +8,7 @@ use App\Http\Controllers\API\LocalidadController;
 use App\Http\Controllers\API\ProductorController;
 use App\Http\Controllers\API\CerveceriumController;
 use App\Http\Controllers\API\CervezaController;
+use App\Http\Controllers\API\PuntoVentumController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,4 +36,5 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::resource('productores', ProductorController::class);
     Route::resource('cervecerias', CerveceriumController::class);
     Route::resource('cervezas', CervezaController::class);
+    Route::resource('cervezas', PuntoVentumController::class);
 });

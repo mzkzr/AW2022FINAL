@@ -8,8 +8,7 @@ class PuntoVentum extends Model
 {
     protected $fillable = [
         'cerveza_id',
-        'cerveceria_id',
-    
+        'cerveceria_id'
     ];
     
     

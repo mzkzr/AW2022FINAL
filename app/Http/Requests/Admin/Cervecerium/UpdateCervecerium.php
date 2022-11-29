@@ -26,12 +26,12 @@ class UpdateCervecerium extends FormRequest
     public function rules(): array
     {
         return [
-            'cuit' => ['sometimes', Rule::unique('cerveceria', 'cuit')->ignore($this->cervecerium->getKey(), $this->cervecerium->getKeyName()), 'string'],
+            'cuit' => ['sometimes', Rule::unique('cerveceria', 'cuit')->ignore($this->cervecerium->getKey(), $this->cervecerium->getKeyName()), 'integer'],
             'domicilio' => ['sometimes', 'string'],
-            'localidad_id' => ['sometimes', 'string'],
+            'localidad_id' => ['sometimes', 'integer'],
             'nombre' => ['sometimes', 'string'],
-            'provincia_id' => ['sometimes', 'string'],
-            'horario_atencion' => ['sometimes', 'string']
+            'provincia_id' => ['sometimes', 'integer'],
+            'horario_atencion'
         ];
     }
 }
