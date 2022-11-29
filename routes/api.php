@@ -36,5 +36,5 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::resource('productores', ProductorController::class);
     Route::resource('cervecerias', CerveceriumController::class);
     Route::resource('cervezas', CervezaController::class);
-    Route::resource('cervezas', PuntoVentumController::class);
+    Route::resource('puntos_venta', PuntoVentumController::class);
 });

@@ -29,13 +29,13 @@ Provincias
 | DELETE | /provincias/_id_ | Eliminar provincia |
 
 
-Localidades:
+Localidades
 
 | Request |   | Descripción |
 | ------- | - | ----------- |
 | GET | /localidades/ | Obtener todas las localidades |
 | GET | /localidades?_parametros_ | Obtener localidades utilizando filtros |
-| | 'provincia_id' => 'sometimes\|required\|integer' |
+| | 'provincia_id' => 'sometimes\|required\|integer' | |
 | GET | /localidades/_id_ | Obtener la localidad {id} |
 | POST | /localidades?_parametros_ | Crear localidad |
 | | 'nombre' => 'required' | |
@@ -46,15 +46,15 @@ Localidades:
 | DELETE | /localidades/_id_ | Eliminar localidad |
 
 
-Productores:
+Productores
 
 | Request |   | Descripción |
 | ------- | - | ----------- |
 | GET | /productores/ | Obtener todos los productores |
 | GET | /productores?_parametros_ | Obtener productores utilizando filtros |
-| | 'nombre' => 'sometimes\|required' |
-| | 'provincia_id' => 'sometimes\|required\|integer' |
-| | 'localidad_id' => 'sometimes\|required\|integer' |
+| | 'nombre' => 'sometimes\|required' | |
+| | 'provincia_id' => 'sometimes\|required\|integer' | |
+| | 'localidad_id' => 'sometimes\|required\|integer' | |
 | GET | /productores/_id_ | Obtener el productor {id} |
 | POST | /productores?_parametros_ | Crear productor |
 | | 'nombre' => 'required' | |
@@ -63,14 +63,14 @@ Productores:
 | | 'provincia_id' => 'required\|integer' | |
 | | 'localidad_id' => 'required\|integer' | |
 | PUT | /productores?_parametros_ | Editar productor |
-| | 'nombre' => 'sometimes\|required' |
-| | 'cuit' => 'sometimes\|required\|integer' |
-| | 'domicilio' => 'sometimes\|required' |
-| | 'provincia_id' => 'sometimes\|required\|integer' |
-| | 'localidad_id' => 'sometimes\|required\|integer' |
+| | 'nombre' => 'sometimes\|required' | |
+| | 'cuit' => 'sometimes\|required\|integer' | |
+| | 'domicilio' => 'sometimes\|required' | |
+| | 'provincia_id' => 'sometimes\|required\|integer' | |
+| | 'localidad_id' => 'sometimes\|required\|integer' | |
 | DELETE | /productores/_id_ | Eliminar productor |
 
-Cervezas:
+Cervezas
 
 | Request |   | Descripción |
 | ------- | - | ----------- |
@@ -102,3 +102,46 @@ Cervezas:
 | | 'og' => 'sometimes\|integer' | |
 | | 'productor_id' => 'sometimes\|required\|integer' | |
 | DELETE | /cervezas/_id_ | Eliminar cerveza |
+
+Cervecerías
+
+| Request |   | Descripción |
+| ------- | - | ----------- |
+| GET | /cervecerias/ | Obtener todas las cervecerías |
+| GET | /cervecerias?_parametros_ | Obtener cervecerías utilizando filtros |
+| | 'nombre' => 'sometimes\|required' |
+| | 'provincia_id' => 'sometimes\|required\|integer' |
+| | 'localidad_id' => 'sometimes\|required\|integer' |
+| GET | /cervecerias/_id_ | Obtener el productor {id} |
+| POST | /cervecerias?_parametros_ | Crear cervecería |
+| | 'nombre' => 'required' | |
+| | 'cuit' => 'required\|integer' | |
+| | 'domicilio' => 'required' | |
+| | 'provincia_id' => 'required\|integer' | |
+| | 'localidad_id' => 'required\|integer' | |
+| | 'horario_atencion' | |
+| PUT | /cervecerias?_parametros_ | Editar cervecería |
+| | 'nombre' => 'sometimes\|required' |
+| | 'cuit' => 'sometimes\|required\|integer' | |
+| | 'domicilio' => 'sometimes\|required' | |
+| | 'provincia_id' => 'sometimes\|required\|integer' | |
+| | 'localidad_id' => 'sometimes\|required\|integer' | |
+| | 'horario_atencion' | |
+| DELETE | /cervecerias/_id_ | Eliminar cervecería |
+
+Puntos de venta
+
+| Request |   | Descripción |
+| ------- | - | ----------- |
+| GET | /puntos_venta/ | Obtener todos los puntos de venta |
+| GET | /puntos_venta?_parametros_ | Obtener puntos de venta utilizando filtros |
+| | 'cerveza_id' => 'sometimes\|required\|integer' |
+| | 'cerveceria_id' => 'sometimes\|required\|integer' |
+| GET | /puntos_venta/_id_ | Obtener el productor {id} |
+| POST | /puntos_venta?_parametros_ | Crear punto de venta |
+| | 'cerveza_id' => 'required\|integer' |
+| | 'cerveceria_id' => 'required\|integer' |
+| PUT | /puntos_venta?_parametros_ | Editar punto de venta |
+| | 'cerveza_id' => 'sometimes\|required\|integer' |
+| | 'cerveceria_id' => 'sometimes\|required\|integer' |
+| DELETE | /puntos_venta/_id_ | Eliminar punto de venta |
