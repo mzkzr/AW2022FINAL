@@ -3,8 +3,8 @@
 - API Reference
 ---------------
 
-| Provincias |
-| ---------- |
+Provincias
+
 | Request | Modelo | Descripción |
 | GET | /provincias/ | Obtener todas las provincias |
 | GET | /provincias/id | Obtener la provincia {id} |
