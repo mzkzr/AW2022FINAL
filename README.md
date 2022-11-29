@@ -3,9 +3,22 @@
 - API Reference
 ---------------
 
+Usuarios
+
+| Request | | Descripción |
+| ------- | | ----------- |
+| GET | /register?_parametros_ | Crear usuario |
+| | 'name' => 'required' | |
+| | 'email' => 'required\|email' | |
+| | 'password' => 'required' | |
+| | 'confirm_password' => 'required\|same:password' | |
+| GET | /login?_parametros_ | Login de usuario |
+| | 'email' => 'required\|email' | |
+| | 'password' => 'required' | |
+
 Provincias
 
-| Request | Modelo | Descripción |
+| Request | | Descripción |
 | ------- | ------ | ----------- |
 | GET | /provincias/ | Obtener todas las provincias |
 | GET | /provincias/_id_ | Obtener la provincia {id} |
@@ -16,11 +29,10 @@ Provincias
 | DELETE | /provincias/_id_ | Eliminar provincia |
 
 
-
 Localidades:
 
-| Request | Modelo | Descripción |
-| ------- | ------ | ----------- |
+| Request | | Descripción |
+| ------- | | ----------- |
 | GET | /localidades/ | Obtener todas las localidades |
 | GET | /localidades?_parametros_ | Obtener localidades utilizando filtros |
 | | 'provincia_id' => 'sometimes\|required\|integer' |
@@ -34,11 +46,10 @@ Localidades:
 | DELETE | /localidades/_id_ | Eliminar localidad |
 
 
-
 Productores:
 
-| Request | Modelo | Descripción |
-| ------- | ------ | ----------- |
+| Request | | Descripción |
+| ------- | | ----------- |
 | GET | /productores/ | Obtener todos los productores |
 | GET | /productores?_parametros_ | Obtener productores utilizando filtros |
 | | 'nombre' => 'sometimes\|required' |
@@ -61,13 +72,20 @@ Productores:
 
 Cervezas:
 
-| Request | Modelo | Descripción |
-| ------- | ------ | ----------- |
+| Request | | Descripción |
+| ------- | | ----------- |
 | GET | /cervezas/ | Obtener todas las cervezas |
 | GET | /cervezas?_parametros_ | Obtener cervezas utilizando filtros |
 | | 'nombre' => 'sometimes\|required' |
-| | 'provincia_id' => 'sometimes\|required\|integer' |
-| | 'localidad_id' => 'sometimes\|required\|integer' |
+| | 'productor_id' => 'sometimes\|required\|integer' |
+| | 'abv_min' => 'sometimes\|required\|float' |
+| | 'abv_max' => 'sometimes\|required\|float' |
+| | 'ibu_min' => 'sometimes\|required\|integer' |
+| | 'ibu_max' => 'sometimes\|required\|integer' |
+| | 'srm_min' => 'required\|integer' |
+| | 'srm_max' => 'required\|integer' |
+| | 'og_min' => 'required\|integer' |
+| | 'og_max' => 'required\|integer' |
 | GET | /cervezas/_id_ | Obtener el productor {id} |
 | POST | /cervezas?_parametros_ | Crear cerveza |
 | | 'nombre' => 'required' | |
