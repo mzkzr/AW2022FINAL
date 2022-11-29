@@ -8,28 +8,29 @@ Provincias
 | Request | Modelo | Descripción |
 | ------- | ------ | ----------- |
 | GET | /provincias/ | Obtener todas las provincias |
-| GET | /provincias/id | Obtener la provincia {id} |
+| GET | /provincias/_id_ | Obtener la provincia {id} |
 | POST | /provincias?_parametros_ | Crear provincia |
 | | 'nombre' => 'required' | |
 | PUT | /provincias?_parametros_ | Editar provincia |
-| | 'nombre' => 'sometimes|required' | |
-| DELETE | /provincias/id | Eliminar provincia |
+| | 'nombre' => 'sometimes\|required' | |
+| DELETE | /provincias/_id_ | Eliminar provincia |
 
 
 Localidades:
-    GET /localidades/                   Obtener todas las localidades
 
-    GET /localidades/id                 Obtener la localidad {id}
-
-    POST /localidades?_parametros_      Crear localidad
-        'nombre' => 'required',
-        'provincia_id' => 'required'
-
-    PUT /localidades?_parametros_       Editar localidad
-        'nombre' => 'sometimes|required',
-        'provincia_id' => 'sometimes|required'
-
-    DELETE /localidades/id              Eliminar localidad
+| Request | Modelo | Descripción |
+| ------- | ------ | ----------- |
+| GET | /localidades/ | Obtener todas las localidades |
+| GET | /localidades?_parametros_ | Obtener la localidades utilizando filtros |
+| | 'provincia_id' => 'sometimes\|required' |
+| GET | /localidades/_id_ | Obtener la localidad {id} |
+| POST | /localidades?_parametros_ | Crear localidad |
+| | 'nombre' => 'required' | |
+| | 'provincia_id' => 'required' | |
+| PUT | /localidades?_parametros_ | Editar localidad |
+| | 'nombre' => 'sometimes|required' | |
+| | 'provincia_id' => 'sometimes|required' | |
+| DELETE | /localidades/_id_ | Eliminar localidad |
 
 
 Productores:
