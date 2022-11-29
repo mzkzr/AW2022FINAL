@@ -16,6 +16,7 @@ Provincias
 | DELETE | /provincias/_id_ | Eliminar provincia |
 
 
+
 Localidades:
 
 | Request | Modelo | Descripción |
@@ -31,6 +32,7 @@ Localidades:
 | | 'nombre' => 'sometimes\|required' | |
 | | 'provincia_id' => 'sometimes\|required\|integer' | |
 | DELETE | /localidades/_id_ | Eliminar localidad |
+
 
 
 Productores:
@@ -56,3 +58,29 @@ Productores:
 | | 'provincia_id' => 'sometimes\|required\|integer' |
 | | 'localidad_id' => 'sometimes\|required\|integer' |
 | DELETE | /productores/_id_ | Eliminar productor |
+
+Cervezas:
+
+| Request | Modelo | Descripción |
+| ------- | ------ | ----------- |
+| GET | /cervezas/ | Obtener todas las cervezas |
+| GET | /cervezas?_parametros_ | Obtener cervezas utilizando filtros |
+| | 'nombre' => 'sometimes\|required' |
+| | 'provincia_id' => 'sometimes\|required\|integer' |
+| | 'localidad_id' => 'sometimes\|required\|integer' |
+| GET | /cervezas/_id_ | Obtener el productor {id} |
+| POST | /cervezas?_parametros_ | Crear cerveza |
+| | 'nombre' => 'required' | |
+| | 'abv' => 'required\|float' | |
+| | 'ibu' => 'required\|integer' | |
+| | 'srm' => 'integer' | |
+| | 'og' => 'integer' | |
+| | 'productor_id' => 'required\|integer' | |
+| PUT | /cervezas?_parametros_ | Editar cerveza |
+| | 'nombre' => 'sometimes\|required' | |
+| | 'abv' => 'sometimes\|required\|float' | |
+| | 'ibu' => 'sometimes\|required\|integer' | |
+| | 'srm' => 'sometimes\|integer' | |
+| | 'og' => 'sometimes\|integer' | |
+| | 'productor_id' => 'sometimes\|required\|integer' | |
+| DELETE | /cervezas/_id_ | Eliminar cerveza |
