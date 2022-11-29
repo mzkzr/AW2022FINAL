@@ -5,8 +5,8 @@
 
 Usuarios
 
-| Request | | Descripción |
-| ------- | | ----------- |
+| Request |   | Descripción |
+| ------- | - | ----------- |
 | GET | /register?_parametros_ | Crear usuario |
 | | 'name' => 'required' | |
 | | 'email' => 'required\|email' | |
@@ -18,8 +18,8 @@ Usuarios
 
 Provincias
 
-| Request | | Descripción |
-| ------- | ------ | ----------- |
+| Request |   | Descripción |
+| ------- | - | ----------- |
 | GET | /provincias/ | Obtener todas las provincias |
 | GET | /provincias/_id_ | Obtener la provincia {id} |
 | POST | /provincias?_parametros_ | Crear provincia |
@@ -31,8 +31,8 @@ Provincias
 
 Localidades:
 
-| Request | | Descripción |
-| ------- | | ----------- |
+| Request |   | Descripción |
+| ------- | - | ----------- |
 | GET | /localidades/ | Obtener todas las localidades |
 | GET | /localidades?_parametros_ | Obtener localidades utilizando filtros |
 | | 'provincia_id' => 'sometimes\|required\|integer' |
@@ -48,8 +48,8 @@ Localidades:
 
 Productores:
 
-| Request | | Descripción |
-| ------- | | ----------- |
+| Request |   | Descripción |
+| ------- | - | ----------- |
 | GET | /productores/ | Obtener todos los productores |
 | GET | /productores?_parametros_ | Obtener productores utilizando filtros |
 | | 'nombre' => 'sometimes\|required' |
@@ -72,8 +72,8 @@ Productores:
 
 Cervezas:
 
-| Request | | Descripción |
-| ------- | | ----------- |
+| Request |   | Descripción |
+| ------- | - | ----------- |
 | GET | /cervezas/ | Obtener todas las cervezas |
 | GET | /cervezas?_parametros_ | Obtener cervezas utilizando filtros |
 | | 'nombre' => 'sometimes\|required' |
