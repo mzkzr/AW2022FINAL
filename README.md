@@ -21,35 +21,38 @@ Localidades:
 | Request | Modelo | Descripción |
 | ------- | ------ | ----------- |
 | GET | /localidades/ | Obtener todas las localidades |
-| GET | /localidades?_parametros_ | Obtener la localidades utilizando filtros |
-| | 'provincia_id' => 'sometimes\|required' |
+| GET | /localidades?_parametros_ | Obtener localidades utilizando filtros |
+| | 'provincia_id' => 'sometimes\|required\|integer' |
 | GET | /localidades/_id_ | Obtener la localidad {id} |
 | POST | /localidades?_parametros_ | Crear localidad |
 | | 'nombre' => 'required' | |
-| | 'provincia_id' => 'required' | |
+| | 'provincia_id' => 'required\|integer' | |
 | PUT | /localidades?_parametros_ | Editar localidad |
-| | 'nombre' => 'sometimes|required' | |
-| | 'provincia_id' => 'sometimes|required' | |
+| | 'nombre' => 'sometimes\|required' | |
+| | 'provincia_id' => 'sometimes\|required\|integer' | |
 | DELETE | /localidades/_id_ | Eliminar localidad |
 
 
 Productores:
-    GET /productores/                   Obtener todas las productores
 
-    GET /productores/id                 Obtener el productor {id}
-
-    POST /productores?_parametros_      Crear productor
-        'nombre' => 'required',
-        'cuit' => 'required',
-        'domicilio' => 'required',
-        'provincia_id' => 'required',
-        'localidad_id' => 'required'
-
-    PUT /productores?_parametros_       Editar productor
-        'nombre' => 'sometimes|required',
-        'cuit' => 'sometimes|required',
-        'domicilio' => 'sometimes|required',
-        'provincia_id' => 'sometimes|required',
-        'localidad_id' => 'sometimes|required'
-
-    DELETE /productores/id              Eliminar productor
+| Request | Modelo | Descripción |
+| ------- | ------ | ----------- |
+| GET | /productores/ | Obtener todos los productores |
+| GET | /productores?_parametros_ | Obtener productores utilizando filtros |
+| | 'nombre' => 'sometimes\|required' |
+| | 'provincia_id' => 'sometimes\|required\|integer' |
+| | 'localidad_id' => 'sometimes\|required\|integer' |
+| GET | /productores/_id_ | Obtener el productor {id} |
+| POST | /productores?_parametros_ | Crear productor |
+| | 'nombre' => 'required' | |
+| | 'cuit' => 'required\|integer' | |
+| | 'domicilio' => 'required' | |
+| | 'provincia_id' => 'required\|integer' | |
+| | 'localidad_id' => 'required\|integer' | |
+| PUT | /productores?_parametros_ | Editar productor |
+| | 'nombre' => 'sometimes\|required' |
+| | 'cuit' => 'sometimes\|required\|integer' |
+| | 'domicilio' => 'sometimes\|required' |
+| | 'provincia_id' => 'sometimes\|required\|integer' |
+| | 'localidad_id' => 'sometimes\|required\|integer' |
+| DELETE | /productores/_id_ | Eliminar productor |
