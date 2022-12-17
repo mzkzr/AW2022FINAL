@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cervecerium extends Model
 {
+    protected $table = 'cerveceria';
+
     protected $fillable = [
         'cuit',
         'domicilio',
@@ -15,11 +17,9 @@ class Cervecerium extends Model
         'horario_atencion'
     ];
     
-    
     protected $dates = [
         'created_at',
-        'updated_at',
-    
+        'updated_at'
     ];
     
     protected $appends = ['localidad', 'provincia', 'resource_url'];

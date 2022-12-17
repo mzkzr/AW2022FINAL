@@ -42,4 +42,9 @@ class Localidad extends Model
     {
         return $this->hasMany(Productor::class);
     }
+
+    public function cervecerias()
+    {
+        return $this->hasMany(Cervecerium::class);
+    }
 }
