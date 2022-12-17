@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('productor_id')->references('id')->on('productor')->onDelete('cascade');
             $table->string('nombre');
+            $table->text('descripcion')->nullable();
             $table->integer('ibu')->nullable();
             $table->float('abv')->nullable();
             $table->integer('srm')->nullable();

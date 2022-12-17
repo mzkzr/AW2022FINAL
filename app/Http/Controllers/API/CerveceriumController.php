@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
    
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\API\BaseController as BaseController;
 use Validator;
 use App\Models\Cervecerium;
@@ -15,17 +16,19 @@ class CerveceriumController extends BaseController
         $provincia_id = $request->input('provincia_id');
         $localidad_id = $request->input('localidad_id');
         $nombre = $request->input('nombre');
-        $cervecerias = Cervecerium::when($provincia_id, function ($query, $provincia_id) {
-                                        $query->where('provincia_id', $provincia_id);
-                                    })
-                                    ->when($localidad_id, function ($query, $localidad_id) {
-                                        $query->where('localidad_id', $localidad_id);
-                                    })
-                                    ->when($nombre, function ($query, $nombre) {
-                                        $query->where('nombre', 'like', "%$nombre%");
-                                    })
-                                    ->get();
-        return $this->sendResponse(CerveceriumResource::collection($cervecerias), 'Cervecerías obtenidas.');
+        $cerveza_id = $request->input('cerveza_id');
+
+        $cervecerias = DB::table('cerveceria')
+                            ->distinct()
+                            ->leftJoin('punto_venta', 'cerveceria.id', '=', 'punto_venta.cerveceria_id')
+                            ->select('cerveceria.*')
+                            ->when($provincia_id, function ($query, $provincia_id) {$query->where('provincia_id', $provincia_id);})
+                            ->when($localidad_id, function ($query, $localidad_id) {$query->where('localidad_id', $localidad_id);})
+                            ->when($nombre, function ($query, $nombre) {$query->where('nombre', 'like', "%$nombre%");})
+                            ->when($cerveza_id, function ($query, $cerveza_id) {$query->where('punto_venta.cerveza_id', '=', $cerveza_id);})
+                            ->get();
+        
+        return $this->sendResponse($cervecerias, 'Cervecerías obtenidas.');
     }
     
     public function store(Request $request)

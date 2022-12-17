@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Admin\Cerveza;
+namespace App\Http\Requests\Admin\Favorito;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rule;
 
-class StoreCerveza extends FormRequest
+class UpdateFavorito extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,7 +15,7 @@ class StoreCerveza extends FormRequest
      */
     public function authorize(): bool
     {
-        return Gate::allows('admin.cerveza.create');
+        return Gate::allows('admin.favorito.edit', $this->favorito);
     }
 
     /**
@@ -26,24 +26,21 @@ class StoreCerveza extends FormRequest
     public function rules(): array
     {
         return [
-            'abv' => ['nullable', 'numeric'],
-            'ibu' => ['nullable', 'integer'],
-            'nombre' => ['required', 'string'],
-            'descripcion' => ['nullable', 'text'],
-            'og' => ['nullable', 'integer'],
-            'productor_id' => ['required', 'string'],
-            'srm' => ['nullable', 'integer']
+            'cerveza_id' => ['sometimes', 'string'],
+            'user_id' => ['sometimes', 'string'],
+            
         ];
     }
 
     /**
-    * Modify input data
-    *
-    * @return array
-    */
+     * Modify input data
+     *
+     * @return array
+     */
     public function getSanitized(): array
     {
         $sanitized = $this->validated();
+
 
         //Add your code for manipulation with request data here
 

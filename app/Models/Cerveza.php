@@ -11,6 +11,7 @@ class Cerveza extends Model
     protected $fillable = [
         'productor_id',
         'nombre',
+        'descripcion',
         'ibu',
         'abv',
         'srm',

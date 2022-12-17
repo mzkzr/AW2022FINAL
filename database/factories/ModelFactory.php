@@ -182,3 +182,14 @@ $factory->define(App\Models\Cervecerium::class, static function (Faker\Generator
         
     ];
 });
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Favorito::class, static function (Faker\Generator $faker) {
+    return [
+        'cerveza_id' => $faker->sentence,
+        'user_id' => $faker->sentence,
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        
+        
+    ];
+});

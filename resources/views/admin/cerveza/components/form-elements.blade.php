@@ -19,6 +19,14 @@
     </div>
 </div>
 
+<div class="form-group row align-items-center" :class="{'has-danger': errors.has('descripcion'), 'has-success': fields.descripcion && fields.descripcion.valid }">
+    <label for="descripcion" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.cerveza.columns.descripcion') }}</label>
+        <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
+        <textarea class="form-control" id="descripcion" name="descripcion" placeholder="{{ trans('admin.cerveza.columns.descripcion') }}"></textarea>
+        <div v-if="errors.has('descripcion')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('descripcion') }}</div>
+    </div>
+</div>
+
 <div class="form-group row align-items-center" :class="{'has-danger': errors.has('ibu'), 'has-success': fields.ibu && fields.ibu.valid }">
     <label for="ibu" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.cerveza.columns.ibu') }}</label>
         <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">

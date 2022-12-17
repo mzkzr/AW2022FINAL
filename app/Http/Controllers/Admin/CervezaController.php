@@ -36,7 +36,7 @@ class CervezaController extends Controller
             $request,
 
             // set columns to query
-            ['id', 'productor_id', 'nombre', 'ibu', 'abv', 'srm', 'og'],
+            ['id', 'productor_id', 'nombre', 'descripcion', 'ibu', 'abv', 'srm', 'og'],
 
             // set columns to searchIn
             ['id', 'nombre', 'productor.nombre'],

@@ -1,20 +1,20 @@
 @extends('brackets/admin-ui::admin.layout.default')
 
-@section('title', trans('admin.provincium.actions.index'))
+@section('title', trans('admin.favorito.actions.index'))
 
 @section('body')
 
-    <provincium-listing
+    <favorito-listing
         :data="{{ $data->toJson() }}"
-        :url="'{{ url('admin/provincia') }}'"
+        :url="'{{ url('admin/favoritos') }}'"
         inline-template>
 
         <div class="row">
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        <i class="fa fa-align-justify"></i> {{ trans('admin.provincium.actions.index') }}
-                        <a class="btn btn-primary btn-spinner btn-sm pull-right m-b-0" href="{{ url('admin/provincia/create') }}" role="button"><i class="fa fa-plus"></i>&nbsp; {{ trans('admin.provincium.actions.create') }}</a>
+                        <i class="fa fa-align-justify"></i> {{ trans('admin.favorito.actions.index') }}
+                        <a class="btn btn-primary btn-spinner btn-sm pull-right m-b-0" href="{{ url('admin/favoritos/create') }}" role="button"><i class="fa fa-plus"></i>&nbsp; {{ trans('admin.favorito.actions.create') }}</a>
                     </div>
                     <div class="card-body" v-cloak>
                         <div class="card-block">
@@ -30,6 +30,7 @@
                                     </div>
                                     <div class="col-sm-auto form-group ">
                                         <select class="form-control" v-model="pagination.state.per_page">
+                                            
                                             <option value="10">10</option>
                                             <option value="25">25</option>
                                             <option value="100">100</option>
@@ -43,19 +44,24 @@
                                     <tr>
                                         <th class="bulk-checkbox">
                                             <input class="form-check-input" id="enabled" type="checkbox" v-model="isClickedAll" v-validate="''" data-vv-name="enabled"  name="enabled_fake_element" @click="onBulkItemsClickedAllWithPagination()">
+                                            <label class="form-check-label" for="enabled">
+                                                #
+                                            </label>
                                         </th>
-                                        
-                                        <th is='sortable' :column="'nombre'">{{ trans('admin.provincium.columns.nombre') }}</th>
+
+                                        <th is='sortable' :column="'id'">{{ trans('admin.favorito.columns.id') }}</th>
+                                        <th is='sortable' :column="'cerveza_id'">{{ trans('admin.favorito.columns.cerveza_id') }}</th>
+                                        <th is='sortable' :column="'user_id'">{{ trans('admin.favorito.columns.user_id') }}</th>
 
                                         <th></th>
                                     </tr>
                                     <tr v-show="(clickedBulkItemsCount > 0) || isClickedAll">
-                                        <td class="bg-bulk-info d-table-cell text-center" colspan="4">
-                                            <span class="align-middle font-weight-light text-dark">{{ trans('brackets/admin-ui::admin.listing.selected_items') }} @{{ clickedBulkItemsCount }}.  <a href="#" class="text-primary" @click="onBulkItemsClickedAll('/admin/provincia')" v-if="(clickedBulkItemsCount < pagination.state.total)"> <i class="fa" :class="bulkCheckingAllLoader ? 'fa-spinner' : ''"></i> {{ trans('brackets/admin-ui::admin.listing.check_all_items') }} @{{ pagination.state.total }}</a> <span class="text-primary">|</span> <a
+                                        <td class="bg-bulk-info d-table-cell text-center" colspan="5">
+                                            <span class="align-middle font-weight-light text-dark">{{ trans('brackets/admin-ui::admin.listing.selected_items') }} @{{ clickedBulkItemsCount }}.  <a href="#" class="text-primary" @click="onBulkItemsClickedAll('/admin/favoritos')" v-if="(clickedBulkItemsCount < pagination.state.total)"> <i class="fa" :class="bulkCheckingAllLoader ? 'fa-spinner' : ''"></i> {{ trans('brackets/admin-ui::admin.listing.check_all_items') }} @{{ pagination.state.total }}</a> <span class="text-primary">|</span> <a
                                                         href="#" class="text-primary" @click="onBulkItemsClickedAllUncheck()">{{ trans('brackets/admin-ui::admin.listing.uncheck_all_items') }}</a>  </span>
 
                                             <span class="pull-right pr-2">
-                                                <button class="btn btn-sm btn-danger pr-3 pl-3" @click="bulkDelete('/admin/provincia/bulk-destroy')">{{ trans('brackets/admin-ui::admin.btn.delete') }}</button>
+                                                <button class="btn btn-sm btn-danger pr-3 pl-3" @click="bulkDelete('/admin/favoritos/bulk-destroy')">{{ trans('brackets/admin-ui::admin.btn.delete') }}</button>
                                             </span>
 
                                         </td>
@@ -69,7 +75,9 @@
                                             </label>
                                         </td>
 
-                                        <td>@{{ item.nombre }}</td>
+                                    <td>@{{ item.id }}</td>
+                                        <td>@{{ item.cerveza_id }}</td>
+                                        <td>@{{ item.user_id }}</td>
                                         
                                         <td>
                                             <div class="row no-gutters">
@@ -98,13 +106,13 @@
                                 <i class="icon-magnifier"></i>
                                 <h3>{{ trans('brackets/admin-ui::admin.index.no_items') }}</h3>
                                 <p>{{ trans('brackets/admin-ui::admin.index.try_changing_items') }}</p>
-                                <a class="btn btn-primary btn-spinner" href="{{ url('admin/provincia/create') }}" role="button"><i class="fa fa-plus"></i>&nbsp; {{ trans('admin.provincium.actions.create') }}</a>
+                                <a class="btn btn-primary btn-spinner" href="{{ url('admin/favoritos/create') }}" role="button"><i class="fa fa-plus"></i>&nbsp; {{ trans('admin.favorito.actions.create') }}</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </provincium-listing>
+    </favorito-listing>
 
 @endsection

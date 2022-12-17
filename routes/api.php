@@ -31,10 +31,12 @@ Route::get('login', [AuthController::class, 'signin']);
 Route::post('register', [AuthController::class, 'signup']);
      
 Route::middleware('auth:sanctum')->group( function () {
-    Route::resource('provincias', ProvinciumController::class);
-    Route::resource('localidades', LocalidadController::class);
-    Route::resource('productores', ProductorController::class);
-    Route::resource('cervecerias', CerveceriumController::class);
-    Route::resource('cervezas', CervezaController::class);
-    Route::resource('puntos_venta', PuntoVentumController::class);
+    
 });
+
+Route::resource('provincias', ProvinciumController::class);
+Route::resource('localidades', LocalidadController::class);
+Route::resource('productores', ProductorController::class);
+Route::resource('cervecerias', CerveceriumController::class);
+Route::resource('cervezas', CervezaController::class);
+Route::resource('puntos_venta', PuntoVentumController::class);
