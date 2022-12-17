@@ -9,6 +9,7 @@ use App\Http\Controllers\API\ProductorController;
 use App\Http\Controllers\API\CerveceriumController;
 use App\Http\Controllers\API\CervezaController;
 use App\Http\Controllers\API\PuntoVentumController;
+use App\Http\Controllers\API\FavoritoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,17 +22,12 @@ use App\Http\Controllers\API\PuntoVentumController;
 |
 */
 
-/*
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-*/
   
 Route::get('login', [AuthController::class, 'signin']);
 Route::post('register', [AuthController::class, 'signup']);
      
 Route::middleware('auth:sanctum')->group( function () {
-    
+    Route::resource('favoritos', FavoritoController::class);
 });
 
 Route::resource('provincias', ProvinciumController::class);
