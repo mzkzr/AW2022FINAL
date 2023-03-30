@@ -91,7 +91,7 @@ class LocalidadController extends Controller
     {
         // Sanitize input
         $sanitized = $request->validated();
-        $sanitized['provincia_id'] = $request->provincia_id;
+        $sanitized['provincia_id'] = $request->getProvinciaId();
 
         // Store the Localidad
         $localidad = Localidad::create($sanitized);
@@ -147,7 +147,7 @@ class LocalidadController extends Controller
     {
         // Sanitize input
         $sanitized = $request->validated();
-        $sanitized['provincia_id'] = $request->provincia_id;
+        $sanitized['provincia_id'] = $request->getProvinciaId();
 
         // Update changed values Localidad
         $localidad->update($sanitized);

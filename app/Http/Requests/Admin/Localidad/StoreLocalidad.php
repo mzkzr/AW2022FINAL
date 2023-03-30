@@ -26,8 +26,16 @@ class StoreLocalidad extends FormRequest
     public function rules(): array
     {
         return [
-            'provincia_id' => ['required', 'integer'],
+            //'provincia_id' => ['required', 'integer'],
+            'provincia' => ['required'],
             'nombre' => ['required', 'string']   
         ];
+    }
+
+    public function getProvinciaId(){
+        if ($this->has('provincia')){
+            return $this->get('provincia')['id'];
+        }
+        return null;
     }
 }

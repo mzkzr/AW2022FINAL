@@ -20108,3 +20108,7 @@ div.trumbowyg-dropdown-table table td.active {
     font-size: 0.875rem !important;
   }
 }
+
+.form-group input {
+  min-height: 40px !important;
+}

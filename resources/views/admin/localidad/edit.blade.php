@@ -10,6 +10,7 @@
             <localidad-form
                 :action="'{{ $localidad->resource_url }}'"
                 :data="{{ $localidad->toJson() }}"
+                :provincias="{{ $provincias->toJson() }}"
                 v-cloak
                 inline-template>
             
