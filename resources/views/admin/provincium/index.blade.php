@@ -44,6 +44,7 @@
                                     <tr>
                                         <th class="bulk-checkbox">
                                             <input class="form-check-input" id="enabled" type="checkbox" v-model="isClickedAll" v-validate="''" data-vv-name="enabled"  name="enabled_fake_element" @click="onBulkItemsClickedAllWithPagination()">
+                                            <label class="form-check-label" for="enabled"></label>
                                         </th>
 
                                         <th is='sortable' :column="'nombre'">{{ trans('admin.provincium.columns.nombre') }}</th>

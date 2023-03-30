@@ -37,10 +37,10 @@ class CerveceriaController extends Controller
             $request,
 
             // set columns to query
-            ['domicilio', 'email', 'horario_atencion', 'id', 'localidad_id', 'nombre', 'productor_id', 'telefono'],
+            ['domicilio', 'email', 'facebook', 'horario_atencion', 'id', 'instagram', 'localidad_id', 'nombre', 'productor_id', 'telefono', 'youtube'],
 
             // set columns to searchIn
-            ['domicilio', 'email', 'horario_atencion', 'id', 'nombre', 'telefono']
+            ['domicilio', 'email', 'facebook', 'horario_atencion', 'id', 'instagram', 'nombre', 'telefono', 'youtube']
         );
 
         if ($request->ajax()) {

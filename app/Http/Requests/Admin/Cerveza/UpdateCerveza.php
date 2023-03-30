@@ -29,7 +29,6 @@ class UpdateCerveza extends FormRequest
             'abv' => ['nullable', 'numeric'],
             'descripcion' => ['nullable', 'string'],
             'ibu' => ['nullable', 'integer'],
-            'imagen' => ['nullable', 'string'],
             'nombre' => ['sometimes', 'string'],
             'og' => ['nullable', 'integer'],
             'productor_id' => ['sometimes', 'string'],

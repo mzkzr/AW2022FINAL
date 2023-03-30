@@ -151,21 +151,6 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
 /* Auto-generated admin routes */
 Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
     Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin/')->group(static function() {
-        Route::prefix('favoritos')->name('favoritos/')->group(static function() {
-            Route::get('/',                                             'FavoritosController@index')->name('index');
-            Route::get('/create',                                       'FavoritosController@create')->name('create');
-            Route::post('/',                                            'FavoritosController@store')->name('store');
-            Route::get('/{favorito}/edit',                              'FavoritosController@edit')->name('edit');
-            Route::post('/bulk-destroy',                                'FavoritosController@bulkDestroy')->name('bulk-destroy');
-            Route::post('/{favorito}',                                  'FavoritosController@update')->name('update');
-            Route::delete('/{favorito}',                                'FavoritosController@destroy')->name('destroy');
-        });
-    });
-});
-
-/* Auto-generated admin routes */
-Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
-    Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin/')->group(static function() {
         Route::prefix('users')->name('users/')->group(static function() {
             Route::get('/',                                             'UsersController@index')->name('index');
             Route::get('/create',                                       'UsersController@create')->name('create');
@@ -174,21 +159,6 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
             Route::post('/bulk-destroy',                                'UsersController@bulkDestroy')->name('bulk-destroy');
             Route::post('/{user}',                                      'UsersController@update')->name('update');
             Route::delete('/{user}',                                    'UsersController@destroy')->name('destroy');
-        });
-    });
-});
-
-/* Auto-generated admin routes */
-Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
-    Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin/')->group(static function() {
-        Route::prefix('favoritos')->name('favoritos/')->group(static function() {
-            Route::get('/',                                             'FavoritosController@index')->name('index');
-            Route::get('/create',                                       'FavoritosController@create')->name('create');
-            Route::post('/',                                            'FavoritosController@store')->name('store');
-            Route::get('/{favorito}/edit',                              'FavoritosController@edit')->name('edit');
-            Route::post('/bulk-destroy',                                'FavoritosController@bulkDestroy')->name('bulk-destroy');
-            Route::post('/{favorito}',                                  'FavoritosController@update')->name('update');
-            Route::delete('/{favorito}',                                'FavoritosController@destroy')->name('destroy');
         });
     });
 });
@@ -264,6 +234,36 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
             Route::post('/bulk-destroy',                                'PuntoVentaController@bulkDestroy')->name('bulk-destroy');
             Route::post('/{puntoVentum}',                               'PuntoVentaController@update')->name('update');
             Route::delete('/{puntoVentum}',                             'PuntoVentaController@destroy')->name('destroy');
+        });
+    });
+});
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
+    Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin/')->group(static function() {
+        Route::prefix('cervezas')->name('cervezas/')->group(static function() {
+            Route::get('/',                                             'CervezasController@index')->name('index');
+            Route::get('/create',                                       'CervezasController@create')->name('create');
+            Route::post('/',                                            'CervezasController@store')->name('store');
+            Route::get('/{cerveza}/edit',                               'CervezasController@edit')->name('edit');
+            Route::post('/bulk-destroy',                                'CervezasController@bulkDestroy')->name('bulk-destroy');
+            Route::post('/{cerveza}',                                   'CervezasController@update')->name('update');
+            Route::delete('/{cerveza}',                                 'CervezasController@destroy')->name('destroy');
+        });
+    });
+});
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
+    Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin/')->group(static function() {
+        Route::prefix('cervezas')->name('cervezas/')->group(static function() {
+            Route::get('/',                                             'CervezaController@index')->name('index');
+            Route::get('/create',                                       'CervezaController@create')->name('create');
+            Route::post('/',                                            'CervezaController@store')->name('store');
+            Route::get('/{cerveza}/edit',                               'CervezaController@edit')->name('edit');
+            Route::post('/bulk-destroy',                                'CervezaController@bulkDestroy')->name('bulk-destroy');
+            Route::post('/{cerveza}',                                   'CervezaController@update')->name('update');
+            Route::delete('/{cerveza}',                                 'CervezaController@destroy')->name('destroy');
         });
     });
 });

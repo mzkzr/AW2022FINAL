@@ -22,7 +22,6 @@ return new class extends Migration
             $table->float('abv')->nullable();
             $table->integer('srm')->nullable();
             $table->integer('og')->nullable();
-            $table->binary('imagen')->nullable();
             $table->timestamps();
         });
     }

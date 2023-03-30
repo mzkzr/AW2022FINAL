@@ -6,9 +6,9 @@ Vue.component('localidad-form', {
     data: function() {
         return {
             form: {
-                provincia_id: '',
-                provincia: '',
-                nombre: ''
+                provincia_id:  '',
+                provincia:  '',
+                nombre:  ''
             }
         }
     }

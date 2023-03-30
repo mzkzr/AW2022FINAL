@@ -37,7 +37,7 @@ class PuntoVentaController extends Controller
             $request,
 
             // set columns to query
-            ['cerveceria_id', 'cerveza_id', 'id'],
+            ['id', 'cerveza_id', 'cerveceria_id'],
 
             // set columns to searchIn
             ['id', 'presentaciones']

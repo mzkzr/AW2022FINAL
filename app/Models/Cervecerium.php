@@ -9,11 +9,15 @@ class Cervecerium extends Model
     protected $fillable = [
         'domicilio',
         'email',
+        'facebook',
         'horario_atencion',
+        'instagram',
         'localidad_id',
         'nombre',
         'productor_id',
-        'telefono'
+        'telefono',
+        'youtube',
+    
     ];
     
     

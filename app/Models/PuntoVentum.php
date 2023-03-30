@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class PuntoVentum extends Model
 {
     protected $fillable = [
-        'cerveceria_id',
         'cerveza_id',
+        'cerveceria_id',
         'presentaciones',
     
     ];

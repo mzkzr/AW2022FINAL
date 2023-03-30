@@ -7,11 +7,15 @@ Vue.component('cervecerium-form', {
             form: {
                 domicilio:  '' ,
                 email:  '' ,
+                facebook:  '' ,
                 horario_atencion:  '' ,
+                instagram:  '' ,
                 localidad_id:  '' ,
                 nombre:  '' ,
                 productor_id:  '' ,
-                telefono:  '' 
+                telefono:  '' ,
+                youtube:  '' ,
+                
             }
         }
     }

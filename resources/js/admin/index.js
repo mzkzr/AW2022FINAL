@@ -7,5 +7,4 @@ import './productor';
 import './cerveza';
 import './cervecerium';
 import './punto-ventum';
-import './favorito';
 import './user';

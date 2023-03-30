@@ -26,7 +26,6 @@ class UpdateLocalidad extends FormRequest
     public function rules(): array
     {
         return [
-            //'provincia_id' => ['required', 'integer'],
             'provincia' => ['required'],
             'nombre' => ['required', 'string']
         ];

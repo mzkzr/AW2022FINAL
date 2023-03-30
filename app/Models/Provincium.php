@@ -29,4 +29,9 @@ class Provincium extends Model
     {
         return $this->hasMany(Localidad::class);
     }
+
+    public function productores()
+    {
+        return $this->hasMany(Productor::class);
+    }
 }

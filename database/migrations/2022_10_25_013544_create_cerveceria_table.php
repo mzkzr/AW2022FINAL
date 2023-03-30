@@ -22,6 +22,9 @@ return new class extends Migration
             $table->foreignId('productor_id')->nullable()->references('id')->on('productor')->nullOnDelete();
             $table->foreignId('localidad_id')->references('id')->on('localidad')->cascadeOnDelete();
             $table->string('horario_atencion')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('youtube')->nullable();
             $table->timestamps();
         });
     }

@@ -7,11 +7,16 @@ Vue.component('productor-form', {
             form: {
                 domicilio:  '' ,
                 email:  '' ,
+                facebook:  '' ,
+                instagram:  '' ,
                 localidad_id:  '' ,
                 nombre:  '' ,
-                telefono:  ''
-            },
-            mediaCollections: ['gallery']
+                provincia_id:  '' ,
+                telefono:  '' ,
+                youtube:  '' ,
+                
+            }
         }
     }
+
 });

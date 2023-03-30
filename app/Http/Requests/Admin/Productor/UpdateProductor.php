@@ -28,9 +28,14 @@ class UpdateProductor extends FormRequest
         return [
             'domicilio' => ['sometimes', 'string'],
             'email' => ['nullable', 'email', 'string'],
-            'localidad_id' => ['sometimes', 'integer'],
+            'facebook' => ['nullable', 'string'],
+            'instagram' => ['nullable', 'string'],
+            'localidad_id' => ['sometimes', 'string'],
             'nombre' => ['sometimes', 'string'],
-            'telefono' => ['nullable', 'string']
+            'provincia_id' => ['sometimes', 'string'],
+            'telefono' => ['nullable', 'string'],
+            'youtube' => ['nullable', 'string'],
+            
         ];
     }
 
@@ -42,6 +47,7 @@ class UpdateProductor extends FormRequest
     public function getSanitized(): array
     {
         $sanitized = $this->validated();
+
 
         //Add your code for manipulation with request data here
 

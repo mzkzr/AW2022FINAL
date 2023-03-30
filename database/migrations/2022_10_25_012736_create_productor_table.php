@@ -19,7 +19,11 @@ return new class extends Migration
             $table->string('domicilio');
             $table->string('telefono')->nullable();
             $table->string('email')->nullable();
+            $table->foreignId('provincia_id')->references('id')->on('provincia')->cascadeOnDelete();
             $table->foreignId('localidad_id')->references('id')->on('localidad')->cascadeOnDelete();
+            $table->string('instagram')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('youtube')->nullable();
             $table->timestamps();
         });
     }

@@ -12,7 +12,6 @@ class Cerveza extends Model
         'abv',
         'descripcion',
         'ibu',
-        'imagen',
         'nombre',
         'og',
         'productor_id',

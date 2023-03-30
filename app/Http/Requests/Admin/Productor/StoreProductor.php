@@ -28,9 +28,14 @@ class StoreProductor extends FormRequest
         return [
             'domicilio' => ['required', 'string'],
             'email' => ['nullable', 'email', 'string'],
-            'localidad_id' => ['required', 'integer'],
+            'facebook' => ['nullable', 'string'],
+            'instagram' => ['nullable', 'string'],
+            'localidad_id' => ['required', 'string'],
             'nombre' => ['required', 'string'],
-            'telefono' => ['nullable', 'string']
+            'provincia_id' => ['required', 'string'],
+            'telefono' => ['nullable', 'string'],
+            'youtube' => ['nullable', 'string'],
+            
         ];
     }
 

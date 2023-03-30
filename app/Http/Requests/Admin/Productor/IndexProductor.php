@@ -25,7 +25,7 @@ class IndexProductor extends FormRequest
     public function rules(): array
     {
         return [
-            'orderBy' => 'in:domicilio,email,id,localidad_id,nombre,telefono|nullable',
+            'orderBy' => 'in:domicilio,email,facebook,id,instagram,localidad_id,nombre,provincia_id,telefono,youtube|nullable',
             'orderDirection' => 'in:asc,desc|nullable',
             'search' => 'string|nullable',
             'page' => 'integer|nullable',

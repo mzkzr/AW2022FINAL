@@ -28,11 +28,14 @@ class UpdateCervecerium extends FormRequest
         return [
             'domicilio' => ['sometimes', 'string'],
             'email' => ['nullable', 'email', 'string'],
+            'facebook' => ['nullable', 'string'],
             'horario_atencion' => ['nullable', 'string'],
+            'instagram' => ['nullable', 'string'],
             'localidad_id' => ['sometimes', 'string'],
             'nombre' => ['sometimes', 'string'],
             'productor_id' => ['nullable', 'string'],
             'telefono' => ['nullable', 'string'],
+            'youtube' => ['nullable', 'string'],
             
         ];
     }

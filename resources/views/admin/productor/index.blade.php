@@ -44,19 +44,26 @@
                                     <tr>
                                         <th class="bulk-checkbox">
                                             <input class="form-check-input" id="enabled" type="checkbox" v-model="isClickedAll" v-validate="''" data-vv-name="enabled"  name="enabled_fake_element" @click="onBulkItemsClickedAllWithPagination()">
+                                            <label class="form-check-label" for="enabled">
+                                                #
+                                            </label>
                                         </th>
 
-                                        <th is='sortable' :column="'nombre'">{{ trans('admin.productor.columns.nombre') }}</th>
-                                        <th is='sortable' :column="'provincia'">{{ trans('admin.localidad.columns.provincia_id') }}</th>
-                                        <th is='sortable' :column="'localidad_id'">{{ trans('admin.productor.columns.localidad_id') }}</th>
                                         <th is='sortable' :column="'domicilio'">{{ trans('admin.productor.columns.domicilio') }}</th>
-                                        <th is='sortable' :column="'telefono'">{{ trans('admin.productor.columns.telefono') }}</th>
                                         <th is='sortable' :column="'email'">{{ trans('admin.productor.columns.email') }}</th>
+                                        <th is='sortable' :column="'facebook'">{{ trans('admin.productor.columns.facebook') }}</th>
+                                        <th is='sortable' :column="'id'">{{ trans('admin.productor.columns.id') }}</th>
+                                        <th is='sortable' :column="'instagram'">{{ trans('admin.productor.columns.instagram') }}</th>
+                                        <th is='sortable' :column="'localidad_id'">{{ trans('admin.productor.columns.localidad_id') }}</th>
+                                        <th is='sortable' :column="'nombre'">{{ trans('admin.productor.columns.nombre') }}</th>
+                                        <th is='sortable' :column="'provincia_id'">{{ trans('admin.productor.columns.provincia_id') }}</th>
+                                        <th is='sortable' :column="'telefono'">{{ trans('admin.productor.columns.telefono') }}</th>
+                                        <th is='sortable' :column="'youtube'">{{ trans('admin.productor.columns.youtube') }}</th>
 
                                         <th></th>
                                     </tr>
                                     <tr v-show="(clickedBulkItemsCount > 0) || isClickedAll">
-                                        <td class="bg-bulk-info d-table-cell text-center" colspan="10">
+                                        <td class="bg-bulk-info d-table-cell text-center" colspan="12">
                                             <span class="align-middle font-weight-light text-dark">{{ trans('brackets/admin-ui::admin.listing.selected_items') }} @{{ clickedBulkItemsCount }}.  <a href="#" class="text-primary" @click="onBulkItemsClickedAll('/admin/productors')" v-if="(clickedBulkItemsCount < pagination.state.total)"> <i class="fa" :class="bulkCheckingAllLoader ? 'fa-spinner' : ''"></i> {{ trans('brackets/admin-ui::admin.listing.check_all_items') }} @{{ pagination.state.total }}</a> <span class="text-primary">|</span> <a
                                                         href="#" class="text-primary" @click="onBulkItemsClickedAllUncheck()">{{ trans('brackets/admin-ui::admin.listing.uncheck_all_items') }}</a>  </span>
 
@@ -74,13 +81,17 @@
                                             <label class="form-check-label" :for="'enabled' + item.id">
                                             </label>
                                         </td>
-                                        
-                                        <td>@{{ item.nombre }}</td>
-                                        <td>@{{ item.localidad.provincia.nombre }}</td>
-                                        <td>@{{ item.localidad.nombre }}</td>
-                                        <td>@{{ item.domicilio }}</td>
-                                        <td>@{{ item.telefono }}</td>
+
+                                    <td>@{{ item.domicilio }}</td>
                                         <td>@{{ item.email }}</td>
+                                        <td>@{{ item.facebook }}</td>
+                                        <td>@{{ item.id }}</td>
+                                        <td>@{{ item.instagram }}</td>
+                                        <td>@{{ item.localidad_id }}</td>
+                                        <td>@{{ item.nombre }}</td>
+                                        <td>@{{ item.provincia_id }}</td>
+                                        <td>@{{ item.telefono }}</td>
+                                        <td>@{{ item.youtube }}</td>
                                         
                                         <td>
                                             <div class="row no-gutters">

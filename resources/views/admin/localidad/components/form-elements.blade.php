@@ -9,7 +9,7 @@
             :multiple="false"
             track-by="id"
             label="nombre"
-            tag-placeholder="{{ __('Seleccione una Provincia') }}"
+            tag-placeholder="{{ __('Seleccione una provincia') }}"
             placeholder="{{ __('Provincia') }}">
         </multiselect>
         <div v-if="errors.has('provincia_id')" class="form-control-feedback form-text" v-cloak>@{{errors.first('provincia_id') }}</div>

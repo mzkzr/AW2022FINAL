@@ -183,17 +183,6 @@ $factory->define(App\Models\Cervecerium::class, static function (Faker\Generator
     ];
 });
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\Models\Favorito::class, static function (Faker\Generator $faker) {
-    return [
-        'cerveza_id' => $faker->sentence,
-        'user_id' => $faker->sentence,
-        'created_at' => $faker->dateTime,
-        'updated_at' => $faker->dateTime,
-        
-        
-    ];
-});
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Models\User::class, static function (Faker\Generator $faker) {
     return [
         'name' => $faker->firstName,
@@ -273,12 +262,90 @@ $factory->define(App\Models\PuntoVentum::class, static function (Faker\Generator
     ];
 });
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\Models\Favorito::class, static function (Faker\Generator $faker) {
+$factory->define(App\Models\Cervecerium::class, static function (Faker\Generator $faker) {
     return [
-        'cerveza_id' => $faker->sentence,
+        'created_at' => $faker->dateTime,
+        'domicilio' => $faker->sentence,
+        'email' => $faker->email,
+        'facebook' => $faker->sentence,
+        'horario_atencion' => $faker->sentence,
+        'instagram' => $faker->sentence,
+        'localidad_id' => $faker->sentence,
+        'nombre' => $faker->sentence,
+        'productor_id' => $faker->sentence,
+        'telefono' => $faker->sentence,
+        'updated_at' => $faker->dateTime,
+        'youtube' => $faker->sentence,
+        
+        
+    ];
+});
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Productor::class, static function (Faker\Generator $faker) {
+    return [
+        'created_at' => $faker->dateTime,
+        'domicilio' => $faker->sentence,
+        'email' => $faker->email,
+        'facebook' => $faker->sentence,
+        'instagram' => $faker->sentence,
+        'localidad_id' => $faker->sentence,
+        'nombre' => $faker->sentence,
+        'provincia_id' => $faker->sentence,
+        'telefono' => $faker->sentence,
+        'updated_at' => $faker->dateTime,
+        'youtube' => $faker->sentence,
+        
+        
+    ];
+});
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Cerveza::class, static function (Faker\Generator $faker) {
+    return [
+        
+        
+    ];
+});
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Cerveza::class, static function (Faker\Generator $faker) {
+    return [
+        'productor_id' => $faker->sentence,
+        'nombre' => $faker->sentence,
+        'descripcion' => $faker->text(),
+        'ibu' => $faker->randomNumber(5),
+        'abv' => $faker->randomFloat,
+        'srm' => $faker->randomNumber(5),
+        'og' => $faker->randomNumber(5),
+        'imagen' => $faker->sentence,
         'created_at' => $faker->dateTime,
         'updated_at' => $faker->dateTime,
-        'user_id' => $faker->sentence,
+        
+        
+    ];
+});
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\PuntoVentum::class, static function (Faker\Generator $faker) {
+    return [
+        'cerveza_id' => $faker->sentence,
+        'cerveceria_id' => $faker->sentence,
+        'presentaciones' => $faker->text(),
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        
+        
+    ];
+});
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Cerveza::class, static function (Faker\Generator $faker) {
+    return [
+        'abv' => $faker->randomFloat,
+        'created_at' => $faker->dateTime,
+        'descripcion' => $faker->text(),
+        'ibu' => $faker->randomNumber(5),
+        'nombre' => $faker->sentence,
+        'og' => $faker->randomNumber(5),
+        'productor_id' => $faker->sentence,
+        'srm' => $faker->randomNumber(5),
+        'updated_at' => $faker->dateTime,
         
         
     ];

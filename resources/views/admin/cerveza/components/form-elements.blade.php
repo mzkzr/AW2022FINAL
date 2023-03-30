@@ -24,14 +24,6 @@
     </div>
 </div>
 
-<div class="form-group row align-items-center" :class="{'has-danger': errors.has('imagen'), 'has-success': fields.imagen && fields.imagen.valid }">
-    <label for="imagen" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.cerveza.columns.imagen') }}</label>
-        <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
-        <input type="text" v-model="form.imagen" v-validate="''" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('imagen'), 'form-control-success': fields.imagen && fields.imagen.valid}" id="imagen" name="imagen" placeholder="{{ trans('admin.cerveza.columns.imagen') }}">
-        <div v-if="errors.has('imagen')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('imagen') }}</div>
-    </div>
-</div>
-
 <div class="form-group row align-items-center" :class="{'has-danger': errors.has('nombre'), 'has-success': fields.nombre && fields.nombre.valid }">
     <label for="nombre" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.cerveza.columns.nombre') }}</label>
         <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">

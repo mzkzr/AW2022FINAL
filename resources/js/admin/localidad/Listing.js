@@ -7,7 +7,7 @@ Vue.component('localidad-listing', {
             showProvinciasFilter: false,
             provinciasMultiselect: {},
             filters: {
-                provincias: [],
+                provincias: []
             },
         }
     },

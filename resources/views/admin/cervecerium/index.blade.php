@@ -51,17 +51,20 @@
 
                                         <th is='sortable' :column="'domicilio'">{{ trans('admin.cervecerium.columns.domicilio') }}</th>
                                         <th is='sortable' :column="'email'">{{ trans('admin.cervecerium.columns.email') }}</th>
+                                        <th is='sortable' :column="'facebook'">{{ trans('admin.cervecerium.columns.facebook') }}</th>
                                         <th is='sortable' :column="'horario_atencion'">{{ trans('admin.cervecerium.columns.horario_atencion') }}</th>
                                         <th is='sortable' :column="'id'">{{ trans('admin.cervecerium.columns.id') }}</th>
+                                        <th is='sortable' :column="'instagram'">{{ trans('admin.cervecerium.columns.instagram') }}</th>
                                         <th is='sortable' :column="'localidad_id'">{{ trans('admin.cervecerium.columns.localidad_id') }}</th>
                                         <th is='sortable' :column="'nombre'">{{ trans('admin.cervecerium.columns.nombre') }}</th>
                                         <th is='sortable' :column="'productor_id'">{{ trans('admin.cervecerium.columns.productor_id') }}</th>
                                         <th is='sortable' :column="'telefono'">{{ trans('admin.cervecerium.columns.telefono') }}</th>
+                                        <th is='sortable' :column="'youtube'">{{ trans('admin.cervecerium.columns.youtube') }}</th>
 
                                         <th></th>
                                     </tr>
                                     <tr v-show="(clickedBulkItemsCount > 0) || isClickedAll">
-                                        <td class="bg-bulk-info d-table-cell text-center" colspan="12">
+                                        <td class="bg-bulk-info d-table-cell text-center" colspan="13">
                                             <span class="align-middle font-weight-light text-dark">{{ trans('brackets/admin-ui::admin.listing.selected_items') }} @{{ clickedBulkItemsCount }}.  <a href="#" class="text-primary" @click="onBulkItemsClickedAll('/admin/cerveceria')" v-if="(clickedBulkItemsCount < pagination.state.total)"> <i class="fa" :class="bulkCheckingAllLoader ? 'fa-spinner' : ''"></i> {{ trans('brackets/admin-ui::admin.listing.check_all_items') }} @{{ pagination.state.total }}</a> <span class="text-primary">|</span> <a
                                                         href="#" class="text-primary" @click="onBulkItemsClickedAllUncheck()">{{ trans('brackets/admin-ui::admin.listing.uncheck_all_items') }}</a>  </span>
 
@@ -80,14 +83,17 @@
                                             </label>
                                         </td>
 
-                                        <td>@{{ item.domicilio }}</td>
+                                    <td>@{{ item.domicilio }}</td>
                                         <td>@{{ item.email }}</td>
+                                        <td>@{{ item.facebook }}</td>
                                         <td>@{{ item.horario_atencion }}</td>
                                         <td>@{{ item.id }}</td>
+                                        <td>@{{ item.instagram }}</td>
                                         <td>@{{ item.localidad_id }}</td>
                                         <td>@{{ item.nombre }}</td>
                                         <td>@{{ item.productor_id }}</td>
                                         <td>@{{ item.telefono }}</td>
+                                        <td>@{{ item.youtube }}</td>
                                         
                                         <td>
                                             <div class="row no-gutters">

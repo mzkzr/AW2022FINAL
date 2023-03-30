@@ -29,7 +29,6 @@ class StoreCerveza extends FormRequest
             'abv' => ['nullable', 'numeric'],
             'descripcion' => ['nullable', 'string'],
             'ibu' => ['nullable', 'integer'],
-            'imagen' => ['nullable', 'string'],
             'nombre' => ['required', 'string'],
             'og' => ['nullable', 'integer'],
             'productor_id' => ['required', 'string'],

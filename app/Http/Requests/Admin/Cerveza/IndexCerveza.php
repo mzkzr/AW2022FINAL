@@ -25,7 +25,7 @@ class IndexCerveza extends FormRequest
     public function rules(): array
     {
         return [
-            'orderBy' => 'in:abv,ibu,id,imagen,nombre,og,productor_id,srm|nullable',
+            'orderBy' => 'in:abv,ibu,id,nombre,og,productor_id,srm|nullable',
             'orderDirection' => 'in:asc,desc|nullable',
             'search' => 'string|nullable',
             'page' => 'integer|nullable',

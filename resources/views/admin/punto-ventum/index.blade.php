@@ -44,10 +44,14 @@
                                     <tr>
                                         <th class="bulk-checkbox">
                                             <input class="form-check-input" id="enabled" type="checkbox" v-model="isClickedAll" v-validate="''" data-vv-name="enabled"  name="enabled_fake_element" @click="onBulkItemsClickedAllWithPagination()">
+                                            <label class="form-check-label" for="enabled">
+                                                #
+                                            </label>
                                         </th>
 
-                                        <th is='sortable' :column="'cerveceria_id'">{{ trans('admin.punto-ventum.columns.cerveceria_id') }}</th>
+                                        <th is='sortable' :column="'id'">{{ trans('admin.punto-ventum.columns.id') }}</th>
                                         <th is='sortable' :column="'cerveza_id'">{{ trans('admin.punto-ventum.columns.cerveza_id') }}</th>
+                                        <th is='sortable' :column="'cerveceria_id'">{{ trans('admin.punto-ventum.columns.cerveceria_id') }}</th>
 
                                         <th></th>
                                     </tr>
@@ -71,8 +75,9 @@
                                             </label>
                                         </td>
 
-                                        <td>@{{ item.cerveceria_id }}</td>
+                                    <td>@{{ item.id }}</td>
                                         <td>@{{ item.cerveza_id }}</td>
+                                        <td>@{{ item.cerveceria_id }}</td>
                                         
                                         <td>
                                             <div class="row no-gutters">

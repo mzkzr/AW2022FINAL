@@ -28,11 +28,15 @@ class StoreCervecerium extends FormRequest
         return [
             'domicilio' => ['required', 'string'],
             'email' => ['nullable', 'email', 'string'],
+            'facebook' => ['nullable', 'string'],
             'horario_atencion' => ['nullable', 'string'],
+            'instagram' => ['nullable', 'string'],
             'localidad_id' => ['required', 'string'],
             'nombre' => ['required', 'string'],
             'productor_id' => ['nullable', 'string'],
-            'telefono' => ['nullable', 'string']
+            'telefono' => ['nullable', 'string'],
+            'youtube' => ['nullable', 'string'],
+            
         ];
     }
 

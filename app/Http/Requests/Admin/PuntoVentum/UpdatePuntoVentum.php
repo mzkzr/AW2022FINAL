@@ -26,8 +26,8 @@ class UpdatePuntoVentum extends FormRequest
     public function rules(): array
     {
         return [
-            'cerveceria_id' => ['sometimes', 'string'],
             'cerveza_id' => ['sometimes', 'string'],
+            'cerveceria_id' => ['sometimes', 'string'],
             'presentaciones' => ['nullable', 'string'],
             
         ];

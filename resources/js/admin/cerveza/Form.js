@@ -8,7 +8,6 @@ Vue.component('cerveza-form', {
                 abv:  '' ,
                 descripcion:  '' ,
                 ibu:  '' ,
-                imagen:  '' ,
                 nombre:  '' ,
                 og:  '' ,
                 productor_id:  '' ,
