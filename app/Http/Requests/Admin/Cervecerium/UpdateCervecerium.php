@@ -34,6 +34,7 @@ class UpdateCervecerium extends FormRequest
             'localidad_id' => ['sometimes', 'string'],
             'nombre' => ['sometimes', 'string'],
             'productor_id' => ['nullable', 'string'],
+            'provincia_id' => ['sometimes', 'string'],
             'telefono' => ['nullable', 'string'],
             'youtube' => ['nullable', 'string'],
             

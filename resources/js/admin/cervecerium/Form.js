@@ -13,6 +13,7 @@ Vue.component('cervecerium-form', {
                 localidad_id:  '' ,
                 nombre:  '' ,
                 productor_id:  '' ,
+                provincia_id:  '' ,
                 telefono:  '' ,
                 youtube:  '' ,
                 

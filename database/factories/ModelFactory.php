@@ -350,3 +350,23 @@ $factory->define(App\Models\Cerveza::class, static function (Faker\Generator $fa
         
     ];
 });
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Cervecerium::class, static function (Faker\Generator $faker) {
+    return [
+        'created_at' => $faker->dateTime,
+        'domicilio' => $faker->sentence,
+        'email' => $faker->email,
+        'facebook' => $faker->sentence,
+        'horario_atencion' => $faker->sentence,
+        'instagram' => $faker->sentence,
+        'localidad_id' => $faker->sentence,
+        'nombre' => $faker->sentence,
+        'productor_id' => $faker->sentence,
+        'provincia_id' => $faker->sentence,
+        'telefono' => $faker->sentence,
+        'updated_at' => $faker->dateTime,
+        'youtube' => $faker->sentence,
+        
+        
+    ];
+});

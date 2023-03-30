@@ -44,18 +44,13 @@
                                     <tr>
                                         <th class="bulk-checkbox">
                                             <input class="form-check-input" id="enabled" type="checkbox" v-model="isClickedAll" v-validate="''" data-vv-name="enabled"  name="enabled_fake_element" @click="onBulkItemsClickedAllWithPagination()">
-                                            <label class="form-check-label" for="enabled">
-                                                #
-                                            </label>
+                                            <label class="form-check-label" for="enabled"></label>
                                         </th>
 
+                                        <th is='sortable' :column="'nombre'">{{ trans('admin.cerveza.columns.nombre') }}</th>
+                                        <th is='sortable' :column="'productor_id'">{{ trans('admin.cerveza.columns.productor_id') }}</th>
                                         <th is='sortable' :column="'abv'">{{ trans('admin.cerveza.columns.abv') }}</th>
                                         <th is='sortable' :column="'ibu'">{{ trans('admin.cerveza.columns.ibu') }}</th>
-                                        <th is='sortable' :column="'id'">{{ trans('admin.cerveza.columns.id') }}</th>
-                                        <th is='sortable' :column="'nombre'">{{ trans('admin.cerveza.columns.nombre') }}</th>
-                                        <th is='sortable' :column="'og'">{{ trans('admin.cerveza.columns.og') }}</th>
-                                        <th is='sortable' :column="'productor_id'">{{ trans('admin.cerveza.columns.productor_id') }}</th>
-                                        <th is='sortable' :column="'srm'">{{ trans('admin.cerveza.columns.srm') }}</th>
 
                                         <th></th>
                                     </tr>
@@ -79,13 +74,10 @@
                                             </label>
                                         </td>
 
-                                    <td>@{{ item.abv }}</td>
-                                        <td>@{{ item.ibu }}</td>
-                                        <td>@{{ item.id }}</td>
                                         <td>@{{ item.nombre }}</td>
-                                        <td>@{{ item.og }}</td>
                                         <td>@{{ item.productor_id }}</td>
-                                        <td>@{{ item.srm }}</td>
+                                        <td>@{{ item.abv }}</td>
+                                        <td>@{{ item.ibu }}</td>
                                         
                                         <td>
                                             <div class="row no-gutters">

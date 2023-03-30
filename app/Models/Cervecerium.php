@@ -15,6 +15,7 @@ class Cervecerium extends Model
         'localidad_id',
         'nombre',
         'productor_id',
+        'provincia_id',
         'telefono',
         'youtube',
     

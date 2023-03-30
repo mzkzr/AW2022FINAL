@@ -34,6 +34,7 @@ class StoreCervecerium extends FormRequest
             'localidad_id' => ['required', 'string'],
             'nombre' => ['required', 'string'],
             'productor_id' => ['nullable', 'string'],
+            'provincia_id' => ['required', 'string'],
             'telefono' => ['nullable', 'string'],
             'youtube' => ['nullable', 'string'],
             
