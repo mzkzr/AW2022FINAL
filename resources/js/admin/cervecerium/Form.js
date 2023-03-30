@@ -5,12 +5,13 @@ Vue.component('cervecerium-form', {
     data: function() {
         return {
             form: {
-                cuit:  '' ,
                 domicilio:  '' ,
+                email:  '' ,
+                horario_atencion:  '' ,
                 localidad_id:  '' ,
                 nombre:  '' ,
-                provincia_id:  '' ,
-                horario_atencion:  ''
+                productor_id:  '' ,
+                telefono:  '' 
             }
         }
     }

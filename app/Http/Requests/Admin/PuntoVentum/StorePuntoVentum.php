@@ -26,9 +26,24 @@ class StorePuntoVentum extends FormRequest
     public function rules(): array
     {
         return [
-            'cerveza_id' => ['required', 'string'],
             'cerveceria_id' => ['required', 'string'],
+            'cerveza_id' => ['required', 'string'],
+            'presentaciones' => ['nullable', 'string'],
             
         ];
+    }
+
+    /**
+    * Modify input data
+    *
+    * @return array
+    */
+    public function getSanitized(): array
+    {
+        $sanitized = $this->validated();
+
+        //Add your code for manipulation with request data here
+
+        return $sanitized;
     }
 }

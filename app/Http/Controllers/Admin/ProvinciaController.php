@@ -22,7 +22,6 @@ use Illuminate\View\View;
 
 class ProvinciaController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -77,7 +76,7 @@ class ProvinciaController extends Controller
     public function store(StoreProvincium $request)
     {
         // Sanitize input
-        $sanitized = $request->validated();
+        $sanitized = $request->getSanitized();
 
         // Store the Provincium
         $provincium = Provincium::create($sanitized);
@@ -130,7 +129,7 @@ class ProvinciaController extends Controller
     public function update(UpdateProvincium $request, Provincium $provincium)
     {
         // Sanitize input
-        $sanitized = $request->validated();
+        $sanitized = $request->getSanitized();
 
         // Update changed values Provincium
         $provincium->update($sanitized);

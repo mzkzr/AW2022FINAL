@@ -193,3 +193,93 @@ $factory->define(App\Models\Favorito::class, static function (Faker\Generator $f
         
     ];
 });
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\User::class, static function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->firstName,
+        'email' => $faker->email,
+        'email_verified_at' => $faker->dateTime,
+        'password' => bcrypt($faker->password),
+        'remember_token' => null,
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        
+        
+    ];
+});
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Productor::class, static function (Faker\Generator $faker) {
+    return [
+        'nombre' => $faker->sentence,
+        'domicilio' => $faker->sentence,
+        'localidad_id' => $faker->sentence,
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime
+    ];
+});
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Productor::class, static function (Faker\Generator $faker) {
+    return [
+        'created_at' => $faker->dateTime,
+        'domicilio' => $faker->sentence,
+        'email' => $faker->email,
+        'localidad_id' => $faker->sentence,
+        'nombre' => $faker->sentence,
+        'telefono' => $faker->sentence,
+        'updated_at' => $faker->dateTime
+    ];
+});
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Cerveza::class, static function (Faker\Generator $faker) {
+    return [
+        'abv' => $faker->randomFloat,
+        'created_at' => $faker->dateTime,
+        'descripcion' => $faker->text(),
+        'ibu' => $faker->randomNumber(5),
+        'imagen' => $faker->sentence,
+        'nombre' => $faker->sentence,
+        'og' => $faker->randomNumber(5),
+        'productor_id' => $faker->sentence,
+        'srm' => $faker->randomNumber(5),
+        'updated_at' => $faker->dateTime,
+        
+        
+    ];
+});
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Cervecerium::class, static function (Faker\Generator $faker) {
+    return [
+        'created_at' => $faker->dateTime,
+        'domicilio' => $faker->sentence,
+        'email' => $faker->email,
+        'horario_atencion' => $faker->sentence,
+        'localidad_id' => $faker->sentence,
+        'nombre' => $faker->sentence,
+        'productor_id' => $faker->sentence,
+        'telefono' => $faker->sentence,
+        'updated_at' => $faker->dateTime
+    ];
+});
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\PuntoVentum::class, static function (Faker\Generator $faker) {
+    return [
+        'cerveceria_id' => $faker->sentence,
+        'cerveza_id' => $faker->sentence,
+        'created_at' => $faker->dateTime,
+        'presentaciones' => $faker->text(),
+        'updated_at' => $faker->dateTime,
+        
+        
+    ];
+});
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Favorito::class, static function (Faker\Generator $faker) {
+    return [
+        'cerveza_id' => $faker->sentence,
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        'user_id' => $faker->sentence,
+        
+        
+    ];
+});

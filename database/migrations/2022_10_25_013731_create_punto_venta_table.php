@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('punto_venta', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cerveza_id')->references('id')->on('cerveza');
-            $table->foreignId('cerveceria_id')->references('id')->on('cerveceria');
+            $table->foreignId('cerveza_id')->references('id')->on('cerveza')->cascadeOnDelete();
+            $table->foreignId('cerveceria_id')->references('id')->on('cerveceria')->cascadeOnDelete();
+            $table->text('presentaciones')->nullable();
             $table->timestamps();
         });
     }

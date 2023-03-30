@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class PuntoVentum extends Model
 {
     protected $fillable = [
+        'cerveceria_id',
         'cerveza_id',
-        'cerveceria_id'
+        'presentaciones',
+    
     ];
     
     
@@ -25,13 +27,5 @@ class PuntoVentum extends Model
     public function getResourceUrlAttribute()
     {
         return url('/admin/punto-venta/'.$this->getKey());
-    }
-
-    public function cerveza() {
-        return $this->belongsTo(Cerveza::class);
-    }
-
-    public function cerveceria() {
-        return $this->belongsTo(Cervecerium::class);
     }
 }

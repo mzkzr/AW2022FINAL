@@ -44,20 +44,15 @@
                                     <tr>
                                         <th class="bulk-checkbox">
                                             <input class="form-check-input" id="enabled" type="checkbox" v-model="isClickedAll" v-validate="''" data-vv-name="enabled"  name="enabled_fake_element" @click="onBulkItemsClickedAllWithPagination()">
-                                            <label class="form-check-label" for="enabled"></label>
                                         </th>
 
                                         <th is='sortable' :column="'nombre'">{{ trans('admin.cerveza.columns.nombre') }}</th>
                                         <th is='sortable' :column="'productor_id'">{{ trans('admin.cerveza.columns.productor_id') }}</th>
-                                        <th is='sortable' :column="'ibu'">{{ trans('admin.cerveza.columns.ibu') }}</th>
-                                        <th is='sortable' :column="'abv'">{{ trans('admin.cerveza.columns.abv') }}</th>
-                                        <th is='sortable' :column="'srm'">{{ trans('admin.cerveza.columns.srm') }}</th>
-                                        <th is='sortable' :column="'og'">{{ trans('admin.cerveza.columns.og') }}</th>
 
                                         <th></th>
                                     </tr>
                                     <tr v-show="(clickedBulkItemsCount > 0) || isClickedAll">
-                                        <td class="bg-bulk-info d-table-cell text-center" colspan="9">
+                                        <td class="bg-bulk-info d-table-cell text-center" colspan="10">
                                             <span class="align-middle font-weight-light text-dark">{{ trans('brackets/admin-ui::admin.listing.selected_items') }} @{{ clickedBulkItemsCount }}.  <a href="#" class="text-primary" @click="onBulkItemsClickedAll('/admin/cervezas')" v-if="(clickedBulkItemsCount < pagination.state.total)"> <i class="fa" :class="bulkCheckingAllLoader ? 'fa-spinner' : ''"></i> {{ trans('brackets/admin-ui::admin.listing.check_all_items') }} @{{ pagination.state.total }}</a> <span class="text-primary">|</span> <a
                                                         href="#" class="text-primary" @click="onBulkItemsClickedAllUncheck()">{{ trans('brackets/admin-ui::admin.listing.uncheck_all_items') }}</a>  </span>
 
@@ -77,11 +72,7 @@
                                         </td>
 
                                         <td>@{{ item.nombre }}</td>
-                                        <td>@{{ item.productor.nombre }}</td>                                        
-                                        <td>@{{ item.ibu }}</td>
-                                        <td>@{{ item.abv }}</td>
-                                        <td>@{{ item.srm }}</td>
-                                        <td>@{{ item.og }}</td>
+                                        <td>@{{ item.productor_id }}</td>
                                         
                                         <td>
                                             <div class="row no-gutters">

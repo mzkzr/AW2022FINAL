@@ -25,7 +25,7 @@ class IndexFavorito extends FormRequest
     public function rules(): array
     {
         return [
-            'orderBy' => 'in:id,cerveza_id,user_id|nullable',
+            'orderBy' => 'in:cerveza_id,id,user_id|nullable',
             'orderDirection' => 'in:asc,desc|nullable',
             'search' => 'string|nullable',
             'page' => 'integer|nullable',

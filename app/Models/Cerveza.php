@@ -9,13 +9,15 @@ class Cerveza extends Model
     protected $table = 'cerveza';
 
     protected $fillable = [
-        'productor_id',
-        'nombre',
+        'abv',
         'descripcion',
         'ibu',
-        'abv',
+        'imagen',
+        'nombre',
+        'og',
+        'productor_id',
         'srm',
-        'og'
+    
     ];
     
     
@@ -25,27 +27,12 @@ class Cerveza extends Model
     
     ];
     
-    protected $appends = ['productor', 'resource_url'];
+    protected $appends = ['resource_url'];
 
     /* ************************ ACCESSOR ************************* */
 
     public function getResourceUrlAttribute()
     {
         return url('/admin/cervezas/'.$this->getKey());
-    }
-
-    public function getProductorAttribute()
-    {
-        $productor = Productor::find($this->productor_id);
-        return $productor->nombre;
-    }
-
-    public function productor() {
-        return $this->belongsTo(Productor::class);
-    }
-
-    public function puntoVenta()
-    {
-        return $this->hasMany(PuntoVentum::class);
     }
 }

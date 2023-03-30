@@ -27,12 +27,14 @@ class StoreCerveza extends FormRequest
     {
         return [
             'abv' => ['nullable', 'numeric'],
+            'descripcion' => ['nullable', 'string'],
             'ibu' => ['nullable', 'integer'],
+            'imagen' => ['nullable', 'string'],
             'nombre' => ['required', 'string'],
-            'descripcion' => ['nullable', 'text'],
             'og' => ['nullable', 'integer'],
             'productor_id' => ['required', 'string'],
-            'srm' => ['nullable', 'integer']
+            'srm' => ['nullable', 'integer'],
+            
         ];
     }
 

@@ -43,7 +43,6 @@
                         <table class="table table-hover table-listing">
                             <thead>
                                 <tr>
-                                    <th is='sortable' :column="'id'">{{ trans('admin.admin-user.columns.id') }}</th>
                                     <th is='sortable' :column="'first_name'">{{ trans('admin.admin-user.columns.first_name') }}</th>
                                     <th is='sortable' :column="'last_name'">{{ trans('admin.admin-user.columns.last_name') }}</th>
                                     <th is='sortable' :column="'email'">{{ trans('admin.admin-user.columns.email') }}</th>
@@ -57,7 +56,6 @@
                             </thead>
                             <tbody>
                                 <tr v-for="(item, index) in collection">
-                                    <td >@{{ item.id }}</td>
                                     <td >@{{ item.first_name }}</td>
                                     <td >@{{ item.last_name }}</td>
                                     <td >@{{ item.email }}</td>

@@ -6,7 +6,7 @@
 
     <div class="container-xl">
 
-                <div class="card">
+        <div class="card">
         
         <provincium-form
             :action="'{{ url('admin/provincia') }}'"

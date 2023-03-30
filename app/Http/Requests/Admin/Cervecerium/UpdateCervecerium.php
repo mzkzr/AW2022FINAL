@@ -26,12 +26,29 @@ class UpdateCervecerium extends FormRequest
     public function rules(): array
     {
         return [
-            'cuit' => ['sometimes', Rule::unique('cerveceria', 'cuit')->ignore($this->cervecerium->getKey(), $this->cervecerium->getKeyName()), 'integer'],
             'domicilio' => ['sometimes', 'string'],
-            'localidad_id' => ['sometimes', 'integer'],
+            'email' => ['nullable', 'email', 'string'],
+            'horario_atencion' => ['nullable', 'string'],
+            'localidad_id' => ['sometimes', 'string'],
             'nombre' => ['sometimes', 'string'],
-            'provincia_id' => ['sometimes', 'integer'],
-            'horario_atencion'
+            'productor_id' => ['nullable', 'string'],
+            'telefono' => ['nullable', 'string'],
+            
         ];
+    }
+
+    /**
+     * Modify input data
+     *
+     * @return array
+     */
+    public function getSanitized(): array
+    {
+        $sanitized = $this->validated();
+
+
+        //Add your code for manipulation with request data here
+
+        return $sanitized;
     }
 }

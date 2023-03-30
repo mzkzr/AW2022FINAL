@@ -9,8 +9,6 @@ use App\Http\Requests\Admin\Cervecerium\IndexCervecerium;
 use App\Http\Requests\Admin\Cervecerium\StoreCervecerium;
 use App\Http\Requests\Admin\Cervecerium\UpdateCervecerium;
 use App\Models\Cervecerium;
-use App\Models\Localidad;
-use App\Models\Provincium;
 use Brackets\AdminListing\Facades\AdminListing;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -33,31 +31,16 @@ class CerveceriaController extends Controller
      */
     public function index(IndexCervecerium $request)
     {
+        // create and AdminListing instance for a specific model and
         $data = AdminListing::create(Cervecerium::class)->processRequestAndGet(
+            // pass the request with params
             $request,
 
             // set columns to query
-            ['cuit', 'domicilio', 'id', 'localidad_id', 'nombre', 'provincia_id', 'horario_atencion'],
+            ['domicilio', 'email', 'horario_atencion', 'id', 'localidad_id', 'nombre', 'productor_id', 'telefono'],
 
             // set columns to searchIn
-            ['domicilio', 'id', 'nombre', 'provincia.nombre', 'localidad.nombre'],
-
-            function ($query) use ($request)
-            {
-                $query->with(['provincia']);
-                $query->join('provincia', 'provincia.id', '=', 'cerveceria.provincia_id');
-
-                $query->with(['localidad']);
-                $query->join('localidad', 'localidad.id', '=', 'cerveceria.localidad_id');
-    
-                if($request->has('provincia')){
-                    $query->whereIn('provincia_id', $request->get('provincia'));
-                }
-
-                if($request->has('localidad')){
-                    $query->whereIn('localidad_id', $request->get('localidad'));
-                }
-            }
+            ['domicilio', 'email', 'horario_atencion', 'id', 'nombre', 'telefono']
         );
 
         if ($request->ajax()) {
@@ -69,11 +52,7 @@ class CerveceriaController extends Controller
             return ['data' => $data];
         }
 
-        return view('admin.cervecerium.index', [
-            'data' => $data,
-            'provincias' => Provincium::get(),
-            'localidades' => Localidad::get()
-        ]);
+        return view('admin.cervecerium.index', ['data' => $data]);
     }
 
     /**
@@ -86,7 +65,7 @@ class CerveceriaController extends Controller
     {
         $this->authorize('admin.cervecerium.create');
 
-        return view('admin.cervecerium.create', ['provincias' => Provincium::get(), 'localidades' => Localidad::get()]);
+        return view('admin.cervecerium.create');
     }
 
     /**
@@ -98,9 +77,7 @@ class CerveceriaController extends Controller
     public function store(StoreCervecerium $request)
     {
         // Sanitize input
-        $sanitized = $request->validated();
-        $sanitized['provincia_id'] = $request->provincia_id;
-        $sanitized['localidad_id'] = $request->localidad_id;
+        $sanitized = $request->getSanitized();
 
         // Store the Cervecerium
         $cervecerium = Cervecerium::create($sanitized);
@@ -137,13 +114,9 @@ class CerveceriaController extends Controller
     {
         $this->authorize('admin.cervecerium.edit', $cervecerium);
 
-        $cervecerium->load('provincia');
-        $cervecerium->load('localidad');
 
         return view('admin.cervecerium.edit', [
             'cervecerium' => $cervecerium,
-            'provincias' => Provincium::all(),
-            'localidades' => Localidad::all()
         ]);
     }
 
@@ -157,9 +130,7 @@ class CerveceriaController extends Controller
     public function update(UpdateCervecerium $request, Cervecerium $cervecerium)
     {
         // Sanitize input
-        $sanitized = $request->validated();
-        $sanitized['provincia_id'] = $request->provincia_id;
-        $sanitized['localidad_id'] = $request->localidad_id;
+        $sanitized = $request->getSanitized();
 
         // Update changed values Cervecerium
         $cervecerium->update($sanitized);

@@ -5,12 +5,13 @@ Vue.component('productor-form', {
     data: function() {
         return {
             form: {
-                nombre:  '' ,
-                cuit:  '' ,
-                provincia_id:  '' ,
+                domicilio:  '' ,
+                email:  '' ,
                 localidad_id:  '' ,
-                domicilio:  '' 
-            }
+                nombre:  '' ,
+                telefono:  ''
+            },
+            mediaCollections: ['gallery']
         }
     }
 });

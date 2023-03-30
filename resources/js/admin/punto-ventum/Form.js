@@ -5,8 +5,9 @@ Vue.component('punto-ventum-form', {
     data: function() {
         return {
             form: {
-                cerveza_id:  '' ,
                 cerveceria_id:  '' ,
+                cerveza_id:  '' ,
+                presentaciones:  '' ,
                 
             }
         }

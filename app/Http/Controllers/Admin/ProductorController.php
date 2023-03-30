@@ -13,6 +13,7 @@ use App\Models\Localidad;
 use App\Models\Provincium;
 use Brackets\AdminListing\Facades\AdminListing;
 use Exception;
+use GuzzleHttp\Handler\Proxy;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
@@ -24,40 +25,36 @@ use Illuminate\View\View;
 
 class ProductorController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
      * @param IndexProductor $request
      * @return array|Factory|View
      */
-
-     public function index(IndexProductor $request)
+    public function index(IndexProductor $request)
     {
+        // create and AdminListing instance for a specific model and
         $data = AdminListing::create(Productor::class)->processRequestAndGet(
+            // pass the request with params
             $request,
 
             // set columns to query
-            ['cuit', 'domicilio', 'id', 'localidad_id', 'nombre', 'provincia_id'],
+            ['domicilio', 'email', 'id', 'localidad_id', 'nombre', 'telefono'],
 
             // set columns to searchIn
-            ['domicilio', 'id', 'nombre', 'provincia.nombre', 'localidad.nombre'],
+            ['domicilio', 'email', 'id', 'nombre', 'telefono', 'provincia.nombre', 'localidad.nombre'],
 
-            function ($query) use ($request)
+            function ($query) use ($request) 
             {
-                $query->with(['provincia']);
-                $query->join('provincia', 'provincia.id', '=', 'productor.provincia_id');
-
                 $query->with(['localidad']);
                 $query->join('localidad', 'localidad.id', '=', 'productor.localidad_id');
-    
-                if($request->has('provincia')){
-                    $query->whereIn('provincia_id', $request->get('provincia'));
-                }
 
                 if($request->has('localidad')){
                     $query->whereIn('localidad_id', $request->get('localidad'));
                 }
+
+                $query->with(['localidad.provincia']);
+                $query->join('provincia', 'provincia.id', '=', 'localidad.provincia_id');
             }
         );
 
@@ -70,11 +67,7 @@ class ProductorController extends Controller
             return ['data' => $data];
         }
 
-        return view('admin.productor.index', [
-            'data' => $data,
-            'provincias' => Provincium::get(),
-            'localidades' => Localidad::get()
-        ]);
+        return view('admin.productor.index', ['data' => $data]);
     }
 
     /**
@@ -87,7 +80,7 @@ class ProductorController extends Controller
     {
         $this->authorize('admin.productor.create');
 
-        return view('admin.productor.create', ['provincias' => Provincium::all(), 'localidades' => Localidad::all()]);
+        return view('admin.productor.create', ['provincias' => Provincium::all()]);
     }
 
     /**
@@ -100,11 +93,9 @@ class ProductorController extends Controller
     {
         // Sanitize input
         $sanitized = $request->validated();
-        $sanitized['provincia_id'] = $request->provincia_id;
-        $sanitized['localidad_id'] = $request->localidad_id;
 
         // Store the Productor
-        $productor = Productor::create($sanitized);
+        Productor::create($sanitized);
 
         if ($request->ajax()) {
             return ['redirect' => url('admin/productors'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
@@ -137,14 +128,16 @@ class ProductorController extends Controller
     public function edit(Productor $productor)
     {
         $this->authorize('admin.productor.edit', $productor);
-
-        $productor->load('provincia');
-        $productor->load('localidad');
+        $localidad = Localidad::where('id', $productor->localidad_id)->first();
+        $mediaItems = $productor->getMedia('gallery');
+        $publicUrl = $mediaItems[0]->getUrl();
 
         return view('admin.productor.edit', [
             'productor' => $productor,
             'provincias' => Provincium::all(),
-            'localidades' => Localidad::all()
+            'provincia_id' => $localidad->provincia_id,
+            'localidades' => Localidad::all(),
+            'media_url' => $publicUrl
         ]);
     }
 
@@ -159,7 +152,6 @@ class ProductorController extends Controller
     {
         // Sanitize input
         $sanitized = $request->validated();
-        $sanitized['provincia_id'] = $request->provincia_id;
         $sanitized['localidad_id'] = $request->localidad_id;
 
         // Update changed values Productor

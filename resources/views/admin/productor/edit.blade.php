@@ -1,6 +1,6 @@
 @extends('brackets/admin-ui::admin.layout.default')
 
-@section('title', trans('admin.productor.actions.edit', ['name' => $productor->nombre]))
+@section('title', trans('admin.productor.actions.edit', ['name' => $productor->email]))
 
 @section('body')
 
@@ -15,15 +15,13 @@
             
                 <form class="form-horizontal form-edit" method="post" @submit.prevent="onSubmit" :action="action" novalidate>
 
-
                     <div class="card-header">
-                        <i class="fa fa-pencil"></i> {{ trans('admin.productor.actions.edit', ['name' => $productor->nombre]) }}
+                        <i class="fa fa-pencil"></i> {{ trans('admin.productor.actions.edit', ['name' => $productor->email]) }}
                     </div>
 
                     <div class="card-body">
                         @include('admin.productor.components.form-elements')
                     </div>
-                    
                     
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary" :disabled="submiting">

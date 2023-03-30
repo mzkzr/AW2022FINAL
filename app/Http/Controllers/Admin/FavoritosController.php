@@ -37,7 +37,7 @@ class FavoritosController extends Controller
             $request,
 
             // set columns to query
-            ['id', 'cerveza_id', 'user_id'],
+            ['cerveza_id', 'id', 'user_id'],
 
             // set columns to searchIn
             ['id']

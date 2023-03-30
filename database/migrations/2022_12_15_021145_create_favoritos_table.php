@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('favoritos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cerveza_id')->references('id')->on('cerveza');
-            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('cerveza_id')->references('id')->on('cerveza')->cascadeOnDelete();
+            $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }

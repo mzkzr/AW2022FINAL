@@ -9,8 +9,6 @@ use App\Http\Requests\Admin\PuntoVentum\IndexPuntoVentum;
 use App\Http\Requests\Admin\PuntoVentum\StorePuntoVentum;
 use App\Http\Requests\Admin\PuntoVentum\UpdatePuntoVentum;
 use App\Models\PuntoVentum;
-use App\Models\Cerveza;
-use App\Models\Cervecerium;
 use Brackets\AdminListing\Facades\AdminListing;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -33,31 +31,16 @@ class PuntoVentaController extends Controller
      */
     public function index(IndexPuntoVentum $request)
     {
+        // create and AdminListing instance for a specific model and
         $data = AdminListing::create(PuntoVentum::class)->processRequestAndGet(
+            // pass the request with params
             $request,
 
             // set columns to query
-            ['id', 'cerveza_id', 'cerveceria_id'],
+            ['cerveceria_id', 'cerveza_id', 'id'],
 
             // set columns to searchIn
-            ['id', 'cerveza.nombre', 'cerveceria.nombre'],
-
-            function ($query) use ($request)
-            {
-                $query->with(['cerveza']);
-                $query->join('cerveza', 'cerveza.id', '=', 'punto_venta.cerveza_id');
-
-                $query->with(['cerveceria']);
-                $query->join('cerveceria', 'cerveceria.id', '=', 'punto_venta.cerveceria_id');
-    
-                if($request->has('cerveza')){
-                    $query->whereIn('cerveza_id', $request->get('cerveza'));
-                }
-
-                if($request->has('cerveceria')){
-                    $query->whereIn('cerveceria_id', $request->get('cerveceria'));
-                }
-            }
+            ['id', 'presentaciones']
         );
 
         if ($request->ajax()) {
@@ -82,7 +65,7 @@ class PuntoVentaController extends Controller
     {
         $this->authorize('admin.punto-ventum.create');
 
-        return view('admin.punto-ventum.create', ['cervecerias' => Cervecerium::all(), 'cervezas' => Cerveza::all()]);
+        return view('admin.punto-ventum.create');
     }
 
     /**
@@ -94,9 +77,7 @@ class PuntoVentaController extends Controller
     public function store(StorePuntoVentum $request)
     {
         // Sanitize input
-        $sanitized = $request->validated();
-        $sanitized['cerveceria_id'] = $request->cerveceria_id;
-        $sanitized['cerveza_id'] = $request->cerveza_id;
+        $sanitized = $request->getSanitized();
 
         // Store the PuntoVentum
         $puntoVentum = PuntoVentum::create($sanitized);
@@ -133,13 +114,9 @@ class PuntoVentaController extends Controller
     {
         $this->authorize('admin.punto-ventum.edit', $puntoVentum);
 
-        $puntoVentum->load('cerveceria');
-        $puntoVentum->load('cerveza');
 
         return view('admin.punto-ventum.edit', [
             'puntoVentum' => $puntoVentum,
-            'cervecerias' => Cervecerium::all(),
-            'cervezas' => Cerveza::all()
         ]);
     }
 
@@ -153,9 +130,7 @@ class PuntoVentaController extends Controller
     public function update(UpdatePuntoVentum $request, PuntoVentum $puntoVentum)
     {
         // Sanitize input
-        $sanitized = $request->validated();
-        $sanitized['cerveceria_id'] = $request->cerveceria_id;
-        $sanitized['cerveza_id'] = $request->cerveza_id;        
+        $sanitized = $request->getSanitized();
 
         // Update changed values PuntoVentum
         $puntoVentum->update($sanitized);

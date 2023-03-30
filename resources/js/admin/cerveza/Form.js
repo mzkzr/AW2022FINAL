@@ -6,9 +6,10 @@ Vue.component('cerveza-form', {
         return {
             form: {
                 abv:  '' ,
+                descripcion:  '' ,
                 ibu:  '' ,
+                imagen:  '' ,
                 nombre:  '' ,
-                descripcion: '',
                 og:  '' ,
                 productor_id:  '' ,
                 srm:  '' ,

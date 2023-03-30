@@ -27,12 +27,14 @@ class UpdateCerveza extends FormRequest
     {
         return [
             'abv' => ['nullable', 'numeric'],
+            'descripcion' => ['nullable', 'string'],
             'ibu' => ['nullable', 'integer'],
+            'imagen' => ['nullable', 'string'],
             'nombre' => ['sometimes', 'string'],
-            'descripcion' => ['nullable', 'text'],
             'og' => ['nullable', 'integer'],
             'productor_id' => ['sometimes', 'string'],
-            'srm' => ['nullable', 'integer']
+            'srm' => ['nullable', 'integer'],
+            
         ];
     }
 

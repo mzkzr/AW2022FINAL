@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('localidad', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('provincia_id')->references('id')->on('provincia')->onDelete('cascade');
+            $table->foreignId('provincia_id')->references('id')->on('provincia')->cascadeOnDelete();
             $table->string('nombre');
             $table->timestamps();
         });

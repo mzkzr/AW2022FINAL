@@ -12,7 +12,10 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "psr/simple-cache": "1.0"
+        "larswiegers/laravel-maps": "^0.13.0",
+        "psr/simple-cache": "1.0",
+        "spatie/laravel-medialibrary": "^10.7",
+        "stevebauman/location": "^6.5"
     },
     "require-dev": {
         "brackets/admin-generator": "^6.2",

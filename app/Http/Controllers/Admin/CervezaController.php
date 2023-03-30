@@ -9,7 +9,6 @@ use App\Http\Requests\Admin\Cerveza\IndexCerveza;
 use App\Http\Requests\Admin\Cerveza\StoreCerveza;
 use App\Http\Requests\Admin\Cerveza\UpdateCerveza;
 use App\Models\Cerveza;
-use App\Models\Productor;
 use Brackets\AdminListing\Facades\AdminListing;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -32,25 +31,16 @@ class CervezaController extends Controller
      */
     public function index(IndexCerveza $request)
     {
+        // create and AdminListing instance for a specific model and
         $data = AdminListing::create(Cerveza::class)->processRequestAndGet(
+            // pass the request with params
             $request,
 
             // set columns to query
-            ['id', 'productor_id', 'nombre', 'descripcion', 'ibu', 'abv', 'srm', 'og'],
+            ['abv', 'ibu', 'id', 'imagen', 'nombre', 'og', 'productor_id', 'srm'],
 
             // set columns to searchIn
-            ['id', 'nombre', 'productor.nombre'],
-
-            function ($query) use ($request)
-            {
-                $query->with(['productor']);
-    
-                $query->join('productor', 'productor.id', '=', 'cerveza.productor_id');
-    
-                if($request->has('productor')){
-                    $query->whereIn('productor_id', $request->get('productor'));
-                }
-            }
+            ['descripcion', 'id', 'nombre']
         );
 
         if ($request->ajax()) {
@@ -62,10 +52,7 @@ class CervezaController extends Controller
             return ['data' => $data];
         }
 
-        return view('admin.cerveza.index', [
-            'data' => $data,
-            'productores' => Productor::get()
-        ]);
+        return view('admin.cerveza.index', ['data' => $data]);
     }
 
     /**
@@ -78,7 +65,7 @@ class CervezaController extends Controller
     {
         $this->authorize('admin.cerveza.create');
 
-        return view('admin.cerveza.create', ['productores' => Productor::all()]);
+        return view('admin.cerveza.create');
     }
 
     /**
@@ -90,8 +77,7 @@ class CervezaController extends Controller
     public function store(StoreCerveza $request)
     {
         // Sanitize input
-        $sanitized = $request->validated();
-        $sanitized['productor_id'] = $request->productor_id;
+        $sanitized = $request->getSanitized();
 
         // Store the Cerveza
         $cerveza = Cerveza::create($sanitized);
@@ -128,11 +114,9 @@ class CervezaController extends Controller
     {
         $this->authorize('admin.cerveza.edit', $cerveza);
 
-        $cerveza->load('productor');
 
         return view('admin.cerveza.edit', [
             'cerveza' => $cerveza,
-            'productores' => Productor::all()
         ]);
     }
 
@@ -146,8 +130,7 @@ class CervezaController extends Controller
     public function update(UpdateCerveza $request, Cerveza $cerveza)
     {
         // Sanitize input
-        $sanitized = $request->validated();
-        $sanitized['productor_id'] = $request->productor_id;
+        $sanitized = $request->getSanitized();
 
         // Update changed values Cerveza
         $cerveza->update($sanitized);

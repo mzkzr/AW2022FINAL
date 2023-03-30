@@ -25,6 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('*',function($view) {
+            $view->with("arcgis_api_key", "AAPKe07d6a3156f843f2860984e04dff6f74qZWNMaAR7fZlkWMCD9UKumorsUc8XtYaMbKW6PvNF7RWD1_3wohmgQCcWLJlRvq2");
+            $view->with("arcgis_basemap_enum", "ArcGIS:Navigation"); 
+        });
     }
 }

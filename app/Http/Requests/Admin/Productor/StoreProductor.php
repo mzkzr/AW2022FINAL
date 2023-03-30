@@ -26,11 +26,25 @@ class StoreProductor extends FormRequest
     public function rules(): array
     {
         return [
-            'nombre' => ['required', 'string'],
-            'cuit' => ['required', Rule::unique('productor', 'cuit'), 'string'],
             'domicilio' => ['required', 'string'],
-            'provincia_id' => ['required', 'string'],
-            'localidad_id' => ['required', 'string']  
+            'email' => ['nullable', 'email', 'string'],
+            'localidad_id' => ['required', 'integer'],
+            'nombre' => ['required', 'string'],
+            'telefono' => ['nullable', 'string']
         ];
+    }
+
+    /**
+    * Modify input data
+    *
+    * @return array
+    */
+    public function getSanitized(): array
+    {
+        $sanitized = $this->validated();
+
+        //Add your code for manipulation with request data here
+
+        return $sanitized;
     }
 }

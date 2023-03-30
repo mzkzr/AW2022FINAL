@@ -15,13 +15,14 @@ return new class extends Migration
     {
         Schema::create('cerveza', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('productor_id')->references('id')->on('productor')->onDelete('cascade');
+            $table->foreignId('productor_id')->references('id')->on('productor')->cascadeOnDelete();
             $table->string('nombre');
             $table->text('descripcion')->nullable();
             $table->integer('ibu')->nullable();
             $table->float('abv')->nullable();
             $table->integer('srm')->nullable();
             $table->integer('og')->nullable();
+            $table->binary('imagen')->nullable();
             $table->timestamps();
         });
     }

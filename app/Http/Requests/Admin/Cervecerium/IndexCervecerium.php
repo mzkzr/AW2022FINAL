@@ -25,7 +25,7 @@ class IndexCervecerium extends FormRequest
     public function rules(): array
     {
         return [
-            'orderBy' => 'in:cuit,domicilio,id,localidad_id,nombre,provincia_id|nullable',
+            'orderBy' => 'in:domicilio,email,horario_atencion,id,localidad_id,nombre,productor_id,telefono|nullable',
             'orderDirection' => 'in:asc,desc|nullable',
             'search' => 'string|nullable',
             'page' => 'integer|nullable',

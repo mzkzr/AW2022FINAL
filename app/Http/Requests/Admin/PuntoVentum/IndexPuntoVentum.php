@@ -25,7 +25,7 @@ class IndexPuntoVentum extends FormRequest
     public function rules(): array
     {
         return [
-            'orderBy' => 'in:id,cerveza_id,cerveceria_id|nullable',
+            'orderBy' => 'in:cerveceria_id,cerveza_id,id|nullable',
             'orderDirection' => 'in:asc,desc|nullable',
             'search' => 'string|nullable',
             'page' => 'integer|nullable',

@@ -26,12 +26,27 @@ class StoreCervecerium extends FormRequest
     public function rules(): array
     {
         return [
-            'cuit' => ['required', Rule::unique('cerveceria', 'cuit'), 'string'],
             'domicilio' => ['required', 'string'],
+            'email' => ['nullable', 'email', 'string'],
+            'horario_atencion' => ['nullable', 'string'],
             'localidad_id' => ['required', 'string'],
             'nombre' => ['required', 'string'],
-            'provincia_id' => ['required', 'string'],
-            'horario_atencion'
+            'productor_id' => ['nullable', 'string'],
+            'telefono' => ['nullable', 'string']
         ];
+    }
+
+    /**
+    * Modify input data
+    *
+    * @return array
+    */
+    public function getSanitized(): array
+    {
+        $sanitized = $this->validated();
+
+        //Add your code for manipulation with request data here
+
+        return $sanitized;
     }
 }

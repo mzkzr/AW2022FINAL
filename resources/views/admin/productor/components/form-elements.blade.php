@@ -6,21 +6,13 @@
     </div>
 </div>
 
-<div class="form-group row align-items-center" :class="{'has-danger': errors.has('cuit'), 'has-success': fields.cuit && fields.cuit.valid }">
-    <label for="cuit" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.productor.columns.cuit') }}</label>
-        <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
-        <input type="text" v-model="form.cuit" v-validate="'required|integer'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('cuit'), 'form-control-success': fields.cuit && fields.cuit.valid}" id="cuit" name="cuit" placeholder="{{ trans('admin.productor.columns.cuit') }}">
-        <div v-if="errors.has('cuit')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('cuit') }}</div>
-    </div>
-</div>
-
 <div class="form-group row align-items-center" :class="{'has-danger': errors.has('provincia_id'), 'has-success': fields.provincia_id && fields.provincia_id.valid }">
     <label for="provincia_id" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.productor.columns.provincia_id') }}</label>
         <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
-        <select v-model="form.provincia_id" id="provincia_id" name="provincia_id" class="form-control" :class="{'form-control-danger': errors.has('provincia_id'), 'form-control-success': fields.provincia_id && fields.provincia_id.valid}">
+        <select id="provincia_id" name="provincia_id" class="form-control" :class="{'form-control-danger': errors.has('provincia_id'), 'form-control-success': fields.provincia_id && fields.provincia_id.valid}">
             <option value="">Seleccione una provincia</option>
             @foreach ($provincias as $provincia)
-                <option value="{{$provincia->id}}">{{$provincia->nombre}}</option>
+                <option @selected($provincia_id) value="{{$provincia->id}}">{{$provincia->nombre}}</option>
             @endforeach
         </select>
         <div v-if="errors.has('provincia_id')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('provincia_id') }}</div>
@@ -33,7 +25,7 @@
         <select v-model="form.localidad_id" id="localidad_id" name="localidad_id" class="form-control" :class="{'form-control-danger': errors.has('localidad_id'), 'form-control-success': fields.localidad_id && fields.localidad_id.valid}">
             <option value="">Seleccione una localidad</option>
             @foreach ($localidades as $localidad)
-                <option value="{{$localidad->id}}">{{$localidad->nombre}}</option>
+                <option @selected('admin.productor.columns.localidad_id') value="{{$localidad->id}}">{{$localidad->nombre}}</option>
             @endforeach
         </select>
         <div v-if="errors.has('localidad_id')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('localidad_id') }}</div>
@@ -47,3 +39,46 @@
         <div v-if="errors.has('domicilio')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('domicilio') }}</div>
     </div>
 </div>
+
+<div class="form-group row align-items-center" :class="{'has-danger': errors.has('telefono'), 'has-success': fields.telefono && fields.telefono.valid }">
+    <label for="telefono" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.productor.columns.telefono') }}</label>
+        <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
+        <input type="text" v-model="form.telefono" v-validate="''" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('telefono'), 'form-control-success': fields.telefono && fields.telefono.valid}" id="telefono" name="telefono" placeholder="{{ trans('admin.productor.columns.telefono') }}">
+        <div v-if="errors.has('telefono')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('telefono') }}</div>
+    </div>
+</div>
+
+<div class="form-group row align-items-center" :class="{'has-danger': errors.has('email'), 'has-success': fields.email && fields.email.valid }">
+    <label for="email" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.productor.columns.email') }}</label>
+        <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
+        <input type="text" v-model="form.email" v-validate="'email'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('email'), 'form-control-success': fields.email && fields.email.valid}" id="email" name="email" placeholder="{{ trans('admin.productor.columns.email') }}">
+        <div v-if="errors.has('email')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('email') }}</div>
+    </div>
+</div>
+
+<div>URL: {{ $media_url }}</div>
+
+@include('brackets/admin-ui::admin.includes.media-uploader', [
+    'mediaCollection' => app(App\Models\Productor::class)->getMediaCollection('gallery'),
+    'media' => $productor->getThumbs200ForCollection('gallery'),
+    'label' => 'Galería'
+])
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#provincia_id').on('change', function () {
+            if (this.value) {
+                $('#localidad_id').html('<option value="">Seleccione una localidad</option>');
+                $.get('/api/localidades?id_localidad='+this.value, function(response) {
+                    response.data.forEach(loc => {
+                        $('#localidad_id').append(`<option value="${loc.id}">${loc.nombre}</option>`)
+                    })
+                    $('#localidad_id').prop('disabled', false)
+                })
+            } else {
+                $('#localidad_id').html('<option value="">Seleccione una localidad</option>').prop('disabled', true)
+            }
+        })
+    })
+</script>

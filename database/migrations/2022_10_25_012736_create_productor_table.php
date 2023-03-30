@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('productor', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->biginteger('cuit')->unique();
             $table->string('domicilio');
-            $table->foreignId('provincia_id')->references('id')->on('provincia')->onDelete('cascade');
-            $table->foreignId('localidad_id')->references('id')->on('localidad')->onDelete('cascade');
+            $table->string('telefono')->nullable();
+            $table->string('email')->nullable();
+            $table->foreignId('localidad_id')->references('id')->on('localidad')->cascadeOnDelete();
             $table->timestamps();
         });
     }

@@ -26,11 +26,25 @@ class UpdateProductor extends FormRequest
     public function rules(): array
     {
         return [
-            'nombre' => ['sometimes', 'string'],
-            'cuit' => ['sometimes', Rule::unique('productor', 'cuit')->ignore($this->productor->getKey(), $this->productor->getKeyName()), 'integer'],
             'domicilio' => ['sometimes', 'string'],
-            'provincia_id' => ['sometimes', 'integer'],
-            'localidad_id' => ['sometimes', 'integer']
+            'email' => ['nullable', 'email', 'string'],
+            'localidad_id' => ['sometimes', 'integer'],
+            'nombre' => ['sometimes', 'string'],
+            'telefono' => ['nullable', 'string']
         ];
+    }
+
+    /**
+     * Modify input data
+     *
+     * @return array
+     */
+    public function getSanitized(): array
+    {
+        $sanitized = $this->validated();
+
+        //Add your code for manipulation with request data here
+
+        return $sanitized;
     }
 }

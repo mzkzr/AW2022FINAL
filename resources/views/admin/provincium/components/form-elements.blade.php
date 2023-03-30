@@ -5,5 +5,3 @@
         <div v-if="errors.has('nombre')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('nombre') }}</div>
     </div>
 </div>
-
-

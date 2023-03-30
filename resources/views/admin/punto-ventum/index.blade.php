@@ -44,7 +44,6 @@
                                     <tr>
                                         <th class="bulk-checkbox">
                                             <input class="form-check-input" id="enabled" type="checkbox" v-model="isClickedAll" v-validate="''" data-vv-name="enabled"  name="enabled_fake_element" @click="onBulkItemsClickedAllWithPagination()">
-                                            <label class="form-check-label" for="enabled"></label>
                                         </th>
 
                                         <th is='sortable' :column="'cerveceria_id'">{{ trans('admin.punto-ventum.columns.cerveceria_id') }}</th>
@@ -72,11 +71,14 @@
                                             </label>
                                         </td>
 
-                                        <td>@{{ item.cerveceria.nombre }}</td>
-                                        <td>@{{ item.cerveza.nombre }}</td>
+                                        <td>@{{ item.cerveceria_id }}</td>
+                                        <td>@{{ item.cerveza_id }}</td>
                                         
                                         <td>
                                             <div class="row no-gutters">
+                                                <div class="col-auto">
+                                                    <a class="btn btn-sm btn-spinner btn-info" :href="item.resource_url + '/edit'" title="{{ trans('brackets/admin-ui::admin.btn.edit') }}" role="button"><i class="fa fa-edit"></i></a>
+                                                </div>
                                                 <form class="col" @submit.prevent="deleteItem(item.resource_url)">
                                                     <button type="submit" class="btn btn-sm btn-danger" title="{{ trans('brackets/admin-ui::admin.btn.delete') }}"><i class="fa fa-trash-o"></i></button>
                                                 </form>

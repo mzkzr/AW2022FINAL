@@ -1,6 +1,6 @@
 @extends('brackets/admin-ui::admin.layout.default')
 
-@section('title', trans('admin.cervecerium.actions.edit', ['name' => $cervecerium->id]))
+@section('title', trans('admin.cervecerium.actions.edit', ['name' => $cervecerium->email]))
 
 @section('body')
 
@@ -17,7 +17,7 @@
 
 
                     <div class="card-header">
-                        <i class="fa fa-pencil"></i> {{ trans('admin.cervecerium.actions.edit', ['name' => $cervecerium->id]) }}
+                        <i class="fa fa-pencil"></i> {{ trans('admin.cervecerium.actions.edit', ['name' => $cervecerium->email]) }}
                     </div>
 
                     <div class="card-body">
