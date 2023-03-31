@@ -6,33 +6,35 @@
 
     <div class="container-xl">
 
-                <div class="card">
+        <div class="card">
         
-        <productor-form
-            :action="'{{ url('admin/productors') }}'"
-            v-cloak
-            inline-template>
+            <productor-form
+                :action="'{{ url('admin/productors') }}'"
+                :provincias="{{ $provincias->toJson() }}"
+                :localidades="{{ $localidades->toJson() }}"
+                v-cloak
+                inline-template>
 
-            <form class="form-horizontal form-create" method="post" @submit.prevent="onSubmit" :action="action" novalidate>
-                
-                <div class="card-header">
-                    <i class="fa fa-plus"></i> {{ trans('admin.productor.actions.create') }}
-                </div>
+                <form class="form-horizontal form-create" method="post" @submit.prevent="onSubmit" :action="action" novalidate>
+                    
+                    <div class="card-header">
+                        <i class="fa fa-plus"></i> {{ trans('admin.productor.actions.create') }}
+                    </div>
 
-                <div class="card-body">
-                    @include('admin.productor.components.form-elements')
-                </div>
-                                
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary" :disabled="submiting">
-                        <i class="fa" :class="submiting ? 'fa-spinner' : 'fa-download'"></i>
-                        {{ trans('brackets/admin-ui::admin.btn.save') }}
-                    </button>
-                </div>
-                
-            </form>
+                    <div class="card-body">
+                        @include('admin.productor.components.form-elements')
+                    </div>
+                                    
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary" :disabled="submiting">
+                            <i class="fa" :class="submiting ? 'fa-spinner' : 'fa-download'"></i>
+                            {{ trans('brackets/admin-ui::admin.btn.save') }}
+                        </button>
+                    </div>
+                    
+                </form>
 
-        </productor-form>
+            </productor-form>
 
         </div>
 

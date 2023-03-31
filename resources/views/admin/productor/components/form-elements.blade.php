@@ -1,8 +1,56 @@
+<div class="form-group row align-items-center" :class="{'has-danger': errors.has('nombre'), 'has-success': fields.nombre && fields.nombre.valid }">
+    <label for="nombre" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.productor.columns.nombre') }}</label>
+        <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
+        <input type="text" v-model="form.nombre" v-validate="'required'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('nombre'), 'form-control-success': fields.nombre && fields.nombre.valid}" id="nombre" name="nombre" placeholder="{{ trans('admin.productor.columns.nombre') }}">
+        <div v-if="errors.has('nombre')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('nombre') }}</div>
+    </div>
+</div>
+
+<div class="form-group row align-items-center" :class="{'has-danger': errors.has('provincia_id'), 'has-success': this.fields.provincia_id && this.fields.provincia_id.valid }">
+    <label for="provincia_id" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.productor.columns.provincia_id') }}</label>
+    <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
+        <multiselect
+            v-model="form.provincia"
+            :options="provincias"
+            :multiple="false"
+            track-by="id"
+            label="nombre"
+            tag-placeholder="{{ __('Seleccionar provincia') }}"
+            placeholder="{{ __('Provincia') }}">
+        </multiselect>
+        <div v-if="errors.has('provincia_id')" class="form-control-feedback form-text" v-cloak>@{{errors.first('provincia_id') }}</div>
+    </div>
+</div>
+
+<div class="form-group row align-items-center" :class="{'has-danger': errors.has('localidad_id'), 'has-success': this.fields.localidad_id && this.fields.localidad_id.valid }">
+    <label for="localidad_id" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.productor.columns.localidad_id') }}</label>
+    <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
+        <multiselect
+            v-model="form.localidad"
+            :options="localidades"
+            :multiple="false"
+            track-by="id"
+            label="nombre"
+            tag-placeholder="{{ __('Seleccionar localidad') }}"
+            placeholder="{{ __('Localidad') }}">
+        </multiselect>
+        <div v-if="errors.has('localidad_id')" class="form-control-feedback form-text" v-cloak>@{{errors.first('localidad_id') }}</div>
+    </div>
+</div>
+
 <div class="form-group row align-items-center" :class="{'has-danger': errors.has('domicilio'), 'has-success': fields.domicilio && fields.domicilio.valid }">
     <label for="domicilio" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.productor.columns.domicilio') }}</label>
         <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
         <input type="text" v-model="form.domicilio" v-validate="'required'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('domicilio'), 'form-control-success': fields.domicilio && fields.domicilio.valid}" id="domicilio" name="domicilio" placeholder="{{ trans('admin.productor.columns.domicilio') }}">
         <div v-if="errors.has('domicilio')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('domicilio') }}</div>
+    </div>
+</div>
+
+<div class="form-group row align-items-center" :class="{'has-danger': errors.has('telefono'), 'has-success': fields.telefono && fields.telefono.valid }">
+    <label for="telefono" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.productor.columns.telefono') }}</label>
+        <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
+        <input type="text" v-model="form.telefono" v-validate="''" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('telefono'), 'form-control-success': fields.telefono && fields.telefono.valid}" id="telefono" name="telefono" placeholder="{{ trans('admin.productor.columns.telefono') }}">
+        <div v-if="errors.has('telefono')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('telefono') }}</div>
     </div>
 </div>
 
@@ -30,38 +78,6 @@
     </div>
 </div>
 
-<div class="form-group row align-items-center" :class="{'has-danger': errors.has('localidad_id'), 'has-success': fields.localidad_id && fields.localidad_id.valid }">
-    <label for="localidad_id" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.productor.columns.localidad_id') }}</label>
-        <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
-        <input type="text" v-model="form.localidad_id" v-validate="'required'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('localidad_id'), 'form-control-success': fields.localidad_id && fields.localidad_id.valid}" id="localidad_id" name="localidad_id" placeholder="{{ trans('admin.productor.columns.localidad_id') }}">
-        <div v-if="errors.has('localidad_id')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('localidad_id') }}</div>
-    </div>
-</div>
-
-<div class="form-group row align-items-center" :class="{'has-danger': errors.has('nombre'), 'has-success': fields.nombre && fields.nombre.valid }">
-    <label for="nombre" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.productor.columns.nombre') }}</label>
-        <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
-        <input type="text" v-model="form.nombre" v-validate="'required'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('nombre'), 'form-control-success': fields.nombre && fields.nombre.valid}" id="nombre" name="nombre" placeholder="{{ trans('admin.productor.columns.nombre') }}">
-        <div v-if="errors.has('nombre')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('nombre') }}</div>
-    </div>
-</div>
-
-<div class="form-group row align-items-center" :class="{'has-danger': errors.has('provincia_id'), 'has-success': fields.provincia_id && fields.provincia_id.valid }">
-    <label for="provincia_id" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.productor.columns.provincia_id') }}</label>
-        <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
-        <input type="text" v-model="form.provincia_id" v-validate="'required'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('provincia_id'), 'form-control-success': fields.provincia_id && fields.provincia_id.valid}" id="provincia_id" name="provincia_id" placeholder="{{ trans('admin.productor.columns.provincia_id') }}">
-        <div v-if="errors.has('provincia_id')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('provincia_id') }}</div>
-    </div>
-</div>
-
-<div class="form-group row align-items-center" :class="{'has-danger': errors.has('telefono'), 'has-success': fields.telefono && fields.telefono.valid }">
-    <label for="telefono" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.productor.columns.telefono') }}</label>
-        <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
-        <input type="text" v-model="form.telefono" v-validate="''" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('telefono'), 'form-control-success': fields.telefono && fields.telefono.valid}" id="telefono" name="telefono" placeholder="{{ trans('admin.productor.columns.telefono') }}">
-        <div v-if="errors.has('telefono')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('telefono') }}</div>
-    </div>
-</div>
-
 <div class="form-group row align-items-center" :class="{'has-danger': errors.has('youtube'), 'has-success': fields.youtube && fields.youtube.valid }">
     <label for="youtube" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.productor.columns.youtube') }}</label>
         <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
@@ -70,4 +86,8 @@
     </div>
 </div>
 
-
+@include('brackets/admin-ui::admin.includes.media-uploader', [
+    'mediaCollection' => app(App\Models\Productor::class)->getMediaCollection('gallery'),
+    'media' => $productor->getThumbs200ForCollection('gallery'),
+    'label' => 'Galería'
+])

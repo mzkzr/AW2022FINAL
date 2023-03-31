@@ -26,16 +26,15 @@ class UpdateProductor extends FormRequest
     public function rules(): array
     {
         return [
-            'domicilio' => ['sometimes', 'string'],
+            'domicilio' => ['required', 'string'],
             'email' => ['nullable', 'email', 'string'],
             'facebook' => ['nullable', 'string'],
             'instagram' => ['nullable', 'string'],
-            'localidad_id' => ['sometimes', 'string'],
-            'nombre' => ['sometimes', 'string'],
-            'provincia_id' => ['sometimes', 'string'],
+            'localidad' => ['required'],
+            'nombre' => ['required', 'string'],
+            'provincia' => ['required'],
             'telefono' => ['nullable', 'string'],
-            'youtube' => ['nullable', 'string'],
-            
+            'youtube' => ['nullable', 'string']  
         ];
     }
 
@@ -52,5 +51,19 @@ class UpdateProductor extends FormRequest
         //Add your code for manipulation with request data here
 
         return $sanitized;
+    }
+
+    public function getProvinciaId(){
+        if ($this->has('provincia')){
+            return $this->get('provincia')['id'];
+        }
+        return null;
+    }
+
+    public function getLocalidadId(){
+        if ($this->has('localidad')){
+            return $this->get('localidad')['id'];
+        }
+        return null;
     }
 }

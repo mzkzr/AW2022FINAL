@@ -10,11 +10,12 @@
             <productor-form
                 :action="'{{ $productor->resource_url }}'"
                 :data="{{ $productor->toJson() }}"
+                :provincias="{{ $provincias->toJson() }}"
+                :localidades="{{ $localidades->toJson() }}"
                 v-cloak
                 inline-template>
             
                 <form class="form-horizontal form-edit" method="post" @submit.prevent="onSubmit" :action="action" novalidate>
-
 
                     <div class="card-header">
                         <i class="fa fa-pencil"></i> {{ trans('admin.productor.actions.edit', ['name' => $productor->email]) }}

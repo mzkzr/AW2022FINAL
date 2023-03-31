@@ -30,12 +30,11 @@ class StoreProductor extends FormRequest
             'email' => ['nullable', 'email', 'string'],
             'facebook' => ['nullable', 'string'],
             'instagram' => ['nullable', 'string'],
-            'localidad_id' => ['required', 'string'],
+            'localidad' => ['required'],
             'nombre' => ['required', 'string'],
-            'provincia_id' => ['required', 'string'],
+            'provincia' => ['required'],
             'telefono' => ['nullable', 'string'],
-            'youtube' => ['nullable', 'string'],
-            
+            'youtube' => ['nullable', 'string']
         ];
     }
 
@@ -51,5 +50,19 @@ class StoreProductor extends FormRequest
         //Add your code for manipulation with request data here
 
         return $sanitized;
+    }
+
+    public function getProvinciaId(){
+        if ($this->has('provincia')){
+            return $this->get('provincia')['id'];
+        }
+        return null;
+    }
+
+    public function getLocalidadId(){
+        if ($this->has('localidad')){
+            return $this->get('localidad')['id'];
+        }
+        return null;
     }
 }
