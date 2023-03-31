@@ -58,13 +58,11 @@ Productores
 | GET | /productores/_id_ | Obtener el productor {id} |
 | POST | /productores?_parametros_ | Crear productor |
 | | 'nombre' => 'required' | |
-| | 'cuit' => 'required\|integer' | |
 | | 'domicilio' => 'required' | |
 | | 'provincia_id' => 'required\|integer' | |
 | | 'localidad_id' => 'required\|integer' | |
 | PUT | /productores?_parametros_ | Editar productor |
 | | 'nombre' => 'sometimes\|required' | |
-| | 'cuit' => 'sometimes\|required\|integer' | |
 | | 'domicilio' => 'sometimes\|required' | |
 | | 'provincia_id' => 'sometimes\|required\|integer' | |
 | | 'localidad_id' => 'sometimes\|required\|integer' | |
@@ -115,14 +113,12 @@ Cervecerías
 | GET | /cervecerias/_id_ | Obtener la cervecería {id} |
 | POST | /cervecerias?_parametros_ | Crear cervecería |
 | | 'nombre' => 'required' | |
-| | 'cuit' => 'required\|integer' | |
 | | 'domicilio' => 'required' | |
 | | 'provincia_id' => 'required\|integer' | |
 | | 'localidad_id' => 'required\|integer' | |
 | | 'horario_atencion' | |
 | PUT | /cervecerias?_parametros_ | Editar cervecería |
 | | 'nombre' => 'sometimes\|required' |
-| | 'cuit' => 'sometimes\|required\|integer' | |
 | | 'domicilio' => 'sometimes\|required' | |
 | | 'provincia_id' => 'sometimes\|required\|integer' | |
 | | 'localidad_id' => 'sometimes\|required\|integer' | |

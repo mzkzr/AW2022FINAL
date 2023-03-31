@@ -33,7 +33,6 @@ class ProductorController extends BaseController
         $input = $request->all();
         $validator = Validator::make($input, [
             'nombre' => 'required',
-            'cuit' => 'required',
             'domicilio' => 'required',
             'provincia_id' => 'required',
             'localidad_id' => 'required'
@@ -59,7 +58,6 @@ class ProductorController extends BaseController
         $input = $request->all();
         $validator = Validator::make($input, [
             'nombre' => 'sometimes|required',
-            'cuit' => 'sometimes|required',
             'domicilio' => 'sometimes|required',
             'provincia_id' => 'sometimes|required',
             'localidad_id' => 'sometimes|required'

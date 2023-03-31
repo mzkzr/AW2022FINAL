@@ -58,8 +58,7 @@ return [
         'columns' => [
             'id' => 'ID',
             'provincia_id' => 'Provincia',
-            'nombre' => 'Nombre',
-            
+            'nombre' => 'Nombre'   
         ],
     ],
 
@@ -75,10 +74,8 @@ return [
         'columns' => [
             'id' => 'ID',
             'nombre' => 'Nombre',
-            'cuit' => 'Cuit',
             'domicilio' => 'Domicilio',
-            'localidad_id' => 'Localidad',
-            
+            'localidad_id' => 'Localidad'  
         ],
     ],
 
@@ -98,8 +95,7 @@ return [
             'ibu' => 'Ibu',
             'abv' => 'Abv',
             'srm' => 'Srm',
-            'og' => 'Og',
-            
+            'og' => 'Og' 
         ],
     ],
 
@@ -115,7 +111,6 @@ return [
         'columns' => [
             'id' => 'ID',
             'nombre' => 'Nombre',
-            'cuit' => 'Cuit',
             'domicilio' => 'Domicilio',
             'localidad_id' => 'Localidad',
             'horario_atencion' => 'Horario de atención'
@@ -134,8 +129,7 @@ return [
         'columns' => [
             'id' => 'ID',
             'cerveza_id' => 'Cerveza',
-            'cerveceria_id' => 'Cerveceria',
-            
+            'cerveceria_id' => 'Cerveceria'  
         ],
     ],
 
@@ -151,10 +145,22 @@ return [
         'columns' => [
             'id' => 'ID',
             'nombre' => 'Nombre',
-            'cuit' => 'Cuit',
             'domicilio' => 'Domicilio',
-            'localidad_id' => 'Localidad',
-            
+            'localidad_id' => 'Localidad'
+        ],
+    ],
+
+    'productor' => [
+        'title' => 'Productor',
+
+        'actions' => [
+            'index' => 'Productor',
+            'create' => 'New Productor',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID' 
         ],
     ],
 
@@ -169,27 +175,10 @@ return [
 
         'columns' => [
             'id' => 'ID',
-            
-        ],
-    ],
-
-    'productor' => [
-        'title' => 'Productor',
-
-        'actions' => [
-            'index' => 'Productor',
-            'create' => 'New Productor',
-            'edit' => 'Edit :name',
-        ],
-
-        'columns' => [
-            'id' => 'ID',
-            'cuit' => 'Cuit',
             'domicilio' => 'Domicilio',
             'localidad_id' => 'Localidad',
             'nombre' => 'Nombre',
-            'provincia_id' => 'Provincia',
-            
+            'provincia_id' => 'Provincia' 
         ],
     ],
 
@@ -205,11 +194,9 @@ return [
         'columns' => [
             'id' => 'ID',
             'nombre' => 'Nombre',
-            'cuit' => 'Cuit',
             'domicilio' => 'Domicilio',
             'provincia_id' => 'Provincia',
-            'localidad_id' => 'Localidad',
-            
+            'localidad_id' => 'Localidad'
         ],
     ],
 
@@ -225,7 +212,6 @@ return [
         'columns' => [
             'id' => 'ID',
             'nombre' => 'Nombre',
-            'cuit' => 'Cuit',
             'domicilio' => 'Domicilio',
             'localidad_id' => 'Localidad',
             'horario_atencion' => 'Horario de atención'
@@ -234,7 +220,6 @@ return [
 
     'cervecerium' => [
         'title' => 'Cerveceria',
-
         'actions' => [
             'index' => 'Cerveceria',
             'create' => 'New Cervecerium',
@@ -243,7 +228,6 @@ return [
 
         'columns' => [
             'id' => 'ID',
-            'cuit' => 'Cuit',
             'domicilio' => 'Domicilio',
             'localidad_id' => 'Localidad',
             'nombre' => 'Nombre',
@@ -254,7 +238,6 @@ return [
 
     'cerveza' => [
         'title' => 'Cerveza',
-
         'actions' => [
             'index' => 'Cerveza',
             'create' => 'New Cerveza',

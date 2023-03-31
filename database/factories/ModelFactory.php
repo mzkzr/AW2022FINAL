@@ -42,7 +42,6 @@ $factory->define(App\Models\Localidad::class, static function (Faker\Generator $
 $factory->define(App\Models\Productor::class, static function (Faker\Generator $faker) {
     return [
         'nombre' => $faker->sentence,
-        'cuit' => $faker->randomNumber(5),
         'domicilio' => $faker->sentence,
         'localidad_id' => $faker->sentence,
         'created_at' => $faker->dateTime,
@@ -70,7 +69,6 @@ $factory->define(App\Models\Cerveza::class, static function (Faker\Generator $fa
 $factory->define(App\Models\Cervecerium::class, static function (Faker\Generator $faker) {
     return [
         'nombre' => $faker->sentence,
-        'cuit' => $faker->randomNumber(5),
         'domicilio' => $faker->sentence,
         'localidad_id' => $faker->sentence,
         'created_at' => $faker->dateTime,
@@ -101,7 +99,6 @@ $factory->define(App\Models\Productor::class, static function (Faker\Generator $
 $factory->define(App\Models\Productor::class, static function (Faker\Generator $faker) {
     return [
         'created_at' => $faker->dateTime,
-        'cuit' => $faker->randomNumber(5),
         'domicilio' => $faker->sentence,
         'localidad_id' => $faker->sentence,
         'nombre' => $faker->sentence,
@@ -115,7 +112,6 @@ $factory->define(App\Models\Productor::class, static function (Faker\Generator $
 $factory->define(App\Models\Productor::class, static function (Faker\Generator $faker) {
     return [
         'nombre' => $faker->sentence,
-        'cuit' => $faker->sentence,
         'domicilio' => $faker->sentence,
         'provincia_id' => $faker->sentence,
         'localidad_id' => $faker->sentence,
@@ -129,7 +125,6 @@ $factory->define(App\Models\Productor::class, static function (Faker\Generator $
 $factory->define(App\Models\Cervecerium::class, static function (Faker\Generator $faker) {
     return [
         'nombre' => $faker->sentence,
-        'cuit' => $faker->sentence,
         'domicilio' => $faker->sentence,
         'localidad_id' => $faker->sentence,
         'created_at' => $faker->dateTime,
@@ -142,7 +137,6 @@ $factory->define(App\Models\Cervecerium::class, static function (Faker\Generator
 $factory->define(App\Models\Cervecerium::class, static function (Faker\Generator $faker) {
     return [
         'created_at' => $faker->dateTime,
-        'cuit' => $faker->sentence,
         'domicilio' => $faker->sentence,
         'localidad_id' => $faker->sentence,
         'nombre' => $faker->sentence,
@@ -171,7 +165,6 @@ $factory->define(App\Models\Cerveza::class, static function (Faker\Generator $fa
 $factory->define(App\Models\Cervecerium::class, static function (Faker\Generator $faker) {
     return [
         'nombre' => $faker->sentence,
-        'cuit' => $faker->sentence,
         'domicilio' => $faker->sentence,
         'provincia_id' => $faker->sentence,
         'localidad_id' => $faker->sentence,
