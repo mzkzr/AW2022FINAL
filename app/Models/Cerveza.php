@@ -34,7 +34,7 @@ class Cerveza extends Model implements HasMedia
         'updated_at'
     ];
     
-    protected $appends = ['resource_url'];
+    protected $appends = ['productor', 'resource_url'];
 
     /* ************************** MEDIA ************************** */
 
@@ -55,6 +55,14 @@ class Cerveza extends Model implements HasMedia
     {
         return url('/admin/cervezas/'.$this->getKey());
     }
+
+    public function getProductorAttribute()
+    {
+        $productor = Productor::find($this->productor_id);
+        return $productor->nombre;
+    }
+
+    /* *********************** RELACIONES ************************ */
 
     public function productor() {
         return $this->belongsTo(Productor::class);

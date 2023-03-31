@@ -28,18 +28,16 @@ class Cervecerium extends Model implements HasMedia
         'productor_id',
         'provincia_id',
         'telefono',
-        'youtube',
-    
+        'youtube'
     ];
     
     
     protected $dates = [
         'created_at',
-        'updated_at',
-    
+        'updated_at'
     ];
     
-    protected $appends = ['resource_url'];
+    protected $appends = ['provincia', 'localidad', 'productor', 'resource_url'];
 
     /* ************************** MEDIA ************************** */
 
@@ -60,6 +58,26 @@ class Cervecerium extends Model implements HasMedia
     {
         return url('/admin/cerveceria/'.$this->getKey());
     }
+
+    public function getProvinciaAttribute()
+    {
+        $provincia = Provincium::find($this->provincia_id);
+        return $provincia->nombre;
+    }
+
+    public function getLocalidadAttribute()
+    {
+        $localidad = Localidad::find($this->localidad_id);
+        return $localidad->nombre;
+    }
+
+    public function getProductorAttribute()
+    {
+        $productor = Productor::find($this->productor_id);
+        return $productor->nombre;
+    }
+
+    /* *********************** RELACIONES ************************ */
 
     public function provincia() {
         return $this->belongsTo(Provincium::class);

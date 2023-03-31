@@ -36,7 +36,7 @@ class Productor extends Model implements HasMedia
         'updated_at'
     ];
     
-    protected $appends = ['resource_url'];
+    protected $appends = ['provincia', 'localidad', 'resource_url'];
 
     /* ************************** MEDIA ************************** */
 
@@ -57,6 +57,20 @@ class Productor extends Model implements HasMedia
     {
         return url('/admin/productors/'.$this->getKey());
     }
+
+    public function getProvinciaAttribute()
+    {
+        $provincia = Provincium::find($this->provincia_id);
+        return $provincia->nombre;
+    }
+
+    public function getLocalidadAttribute()
+    {
+        $localidad = Localidad::find($this->localidad_id);
+        return $localidad->nombre;
+    }
+
+    /* *********************** RELACIONES ************************ */
 
     public function provincia() {
         return $this->belongsTo(Provincium::class);

@@ -9,8 +9,7 @@ class PuntoVentum extends Model
     protected $fillable = [
         'cerveza_id',
         'cerveceria_id',
-        'presentaciones',
-    
+        'presentaciones'
     ];
     
     
@@ -20,7 +19,7 @@ class PuntoVentum extends Model
     
     ];
     
-    protected $appends = ['resource_url'];
+    protected $appends = ['cerveza', 'cerveceria', 'resource_url'];
 
     /* ************************ ACCESSOR ************************* */
 
@@ -28,6 +27,20 @@ class PuntoVentum extends Model
     {
         return url('/admin/punto-venta/'.$this->getKey());
     }
+
+    public function getCervezaAttribute()
+    {
+        $cerveza = Cerveza::find($this->cerveza_id);
+        return $cerveza->nombre;
+    }
+
+    public function getCerveceriaAttribute()
+    {
+        $cerveceria = Cervecerium::find($this->cerveceria_id);
+        return $cerveceria->nombre;
+    }
+
+    /* *********************** RELACIONES ************************ */
 
     public function cerveza() {
         return $this->belongsTo(Cerveza::class);

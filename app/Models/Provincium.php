@@ -25,6 +25,8 @@ class Provincium extends Model
         return url('/admin/provincia/'.$this->getKey());
     }
 
+    /* *********************** RELACIONES ************************ */
+
     public function localidades()
     {
         return $this->hasMany(Localidad::class);

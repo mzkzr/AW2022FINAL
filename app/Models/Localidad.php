@@ -34,6 +34,8 @@ class Localidad extends Model
         return $provincia->nombre;
     }
 
+    /* *********************** RELACIONES ************************ */
+
     public function provincia() {
         return $this->belongsTo(Provincium::class);
     }
