@@ -33,7 +33,7 @@ class UpdateCervecerium extends FormRequest
             'instagram' => ['nullable', 'string'],
             'localidad' => ['required'],
             'nombre' => ['sometimes', 'string'],
-            'productor' => ['required'],
+            'productor' => ['nullable'],
             'provincia' => ['required'],
             'telefono' => ['nullable', 'string'],
             'youtube' => ['nullable', 'string']

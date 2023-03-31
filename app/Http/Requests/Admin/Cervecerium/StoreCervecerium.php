@@ -33,7 +33,7 @@ class StoreCervecerium extends FormRequest
             'instagram' => ['nullable', 'string'],
             'localidad' => ['required'],
             'nombre' => ['required', 'string'],
-            'productor' => ['required'],
+            'productor' => ['nullable'],
             'provincia' => ['required'],
             'telefono' => ['nullable', 'string'],
             'youtube' => ['nullable', 'string']

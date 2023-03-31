@@ -72,8 +72,8 @@
                                             </label>
                                         </td>
 
-                                        <td>@{{ item.cerveza_id }}</td>
-                                        <td>@{{ item.cerveceria_id }}</td>
+                                        <td>@{{ item.cerveza.nombre }}</td>
+                                        <td>@{{ item.cerveceria.nombre }}</td>
                                         
                                         <td>
                                             <div class="row no-gutters">

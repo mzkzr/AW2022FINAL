@@ -7,7 +7,7 @@
 </div>
 
 <div class="form-group row align-items-center" :class="{'has-danger': errors.has('provincia_id'), 'has-success': this.fields.provincia_id && this.fields.provincia_id.valid }">
-    <label for="provincia_id" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.cerveceria.columns.provincia_id') }}</label>
+    <label for="provincia_id" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.cervecerium.columns.provincia_id') }}</label>
     <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
         <multiselect
             v-model="form.provincia"
@@ -23,7 +23,7 @@
 </div>
 
 <div class="form-group row align-items-center" :class="{'has-danger': errors.has('localidad_id'), 'has-success': this.fields.localidad_id && this.fields.localidad_id.valid }">
-    <label for="localidad_id" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.cerveceria.columns.localidad_id') }}</label>
+    <label for="localidad_id" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.cervecerium.columns.localidad_id') }}</label>
     <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
         <multiselect
             v-model="form.localidad"
@@ -39,7 +39,7 @@
 </div>
 
 <div class="form-group row align-items-center" :class="{'has-danger': errors.has('productor_id'), 'has-success': this.fields.productor_id && this.fields.productor_id.valid }">
-    <label for="productor_id" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.cerveceria.columns.productor_id') }}</label>
+    <label for="productor_id" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.cervecerium.columns.productor_id') }}</label>
     <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
         <multiselect
             v-model="form.productor"
