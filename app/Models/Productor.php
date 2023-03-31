@@ -36,7 +36,7 @@ class Productor extends Model implements HasMedia
         'updated_at'
     ];
     
-    protected $appends = ['provincia', 'localidad', 'resource_url'];
+    protected $appends = ['provincia', 'localidad', 'resource_url', 'media_urls'];
 
     /* ************************** MEDIA ************************** */
 
@@ -68,6 +68,16 @@ class Productor extends Model implements HasMedia
     {
         $localidad = Localidad::find($this->localidad_id);
         return $localidad->nombre;
+    }
+
+    public function getMediaUrlsAttribute() {
+        $mediaItems = $this->getMedia();
+
+        $mediaUrls = $mediaItems->map(function (Media $media) {
+            return $media->getFullUrl();
+        });
+
+        return $mediaUrls;
     }
 
     /* *********************** RELACIONES ************************ */
