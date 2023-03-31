@@ -16,8 +16,8 @@ Vue.component('productor-form', {
                 nombre:  '' ,
                 telefono:  '' ,
                 youtube:  ''
-            }
+            },
+            mediaCollections: ['gallery']
         }
-    },
-    mediaCollections: ['gallery']
+    }
 });
