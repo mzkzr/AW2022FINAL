@@ -25,24 +25,23 @@ class CervezaController extends BaseController
         $og_min = $request->input('og_min');
         $og_max = $request->input('og_max');
         
-        $cervezas = DB::table('cerveza')
-                        ->distinct()
-                        ->leftJoin('punto_venta', 'cerveza.id', '=', 'punto_venta.cerveza_id')
-                        ->select('cerveza.*')
-                        ->when($productor_id, function ($query, $productor_id) {$query->where('productor_id', $productor_id);})
-                        ->when($nombre, function ($query, $nombre) {$query->where('nombre', 'like', "%$nombre%");})
-                        ->when($abv_min, function ($query, $abv_min) {$query->where('abv', '>=', $abv_min);})
-                        ->when($abv_max, function ($query, $abv_max) {$query->where('abv', '<=', $abv_max);})
-                        ->when($ibu_min, function ($query, $ibu_min) {$query->where('ibu', '>=', $ibu_min);})
-                        ->when($ibu_max, function ($query, $ibu_max) {$query->where('ibu', '<=', $ibu_max);})
-                        ->when($srm_min, function ($query, $srm_min) {$query->where('srm', '>=', $srm_min);})
-                        ->when($srm_max, function ($query, $srm_max) {$query->where('srm', '<=', $srm_max);})
-                        ->when($og_min, function ($query, $og_min) {$query->where('og', '>=', $og_min);})
-                        ->when($og_max, function ($query, $og_max) {$query->where('og', '<=', $og_max);})
-                        ->when($cerveceria_id, function ($query, $cerveceria_id) {$query->where('punto_venta.cerveceria_id', '=', $cerveceria_id);})
-                        ->get();
+        $cervezas = Cerveza::distinct()
+                            ->leftJoin('punto_venta', 'cerveza.id', '=', 'punto_venta.cerveza_id')
+                            ->select('cerveza.*')
+                            ->when($productor_id, function ($query, $productor_id) {$query->where('productor_id', $productor_id);})
+                            ->when($nombre, function ($query, $nombre) {$query->where('nombre', 'like', "%$nombre%");})
+                            ->when($abv_min, function ($query, $abv_min) {$query->where('abv', '>=', $abv_min);})
+                            ->when($abv_max, function ($query, $abv_max) {$query->where('abv', '<=', $abv_max);})
+                            ->when($ibu_min, function ($query, $ibu_min) {$query->where('ibu', '>=', $ibu_min);})
+                            ->when($ibu_max, function ($query, $ibu_max) {$query->where('ibu', '<=', $ibu_max);})
+                            ->when($srm_min, function ($query, $srm_min) {$query->where('srm', '>=', $srm_min);})
+                            ->when($srm_max, function ($query, $srm_max) {$query->where('srm', '<=', $srm_max);})
+                            ->when($og_min, function ($query, $og_min) {$query->where('og', '>=', $og_min);})
+                            ->when($og_max, function ($query, $og_max) {$query->where('og', '<=', $og_max);})
+                            ->when($cerveceria_id, function ($query, $cerveceria_id) {$query->where('punto_venta.cerveceria_id', '=', $cerveceria_id);})
+                            ->get();
 
-        return $this->sendResponse($cervezas, 'Cervezas obtenidas.');
+        return $this->sendResponse(CervezaResource::collection($cervezas), 'Cervezas obtenidas.');
     }
     
     public function store(Request $request)
