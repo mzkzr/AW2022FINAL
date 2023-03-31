@@ -92,7 +92,7 @@ class CerveceriaController extends Controller
         $this->authorize('admin.cervecerium.create');
 
         return view('admin.cervecerium.create', [
-            'cerveceria' => new Cervecerium(),
+            'cervecerium' => new Cervecerium(),
             'provincias' => Provincium::all(),
             'localidades' => Localidad::all(),
             'productores' => Productor::all()
