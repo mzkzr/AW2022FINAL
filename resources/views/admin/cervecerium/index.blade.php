@@ -76,8 +76,8 @@
                                         </td>
 
                                         <td>@{{ item.nombre }}</td>
-                                        <td>@{{ item.provincia_id }}</td>
-                                        <td>@{{ item.localidad_id }}</td>
+                                        <td>@{{ item.provincia.nombre }}</td>
+                                        <td>@{{ item.localidad.nombre }}</td>
                                         <td>@{{ item.telefono }}</td>
                                         <td>@{{ item.email }}</td>
                                         

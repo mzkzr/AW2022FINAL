@@ -41,7 +41,7 @@ class Productor extends Model implements HasMedia
     /* ************************** MEDIA ************************** */
 
     public function registerMediaCollections(): void {
-        $this->addMediaCollection('gallery')
+        $this->addMediaCollection('gallery_productor')
             ->accepts('image/*')
             ->maxNumberOfFiles(20);
     }
@@ -64,5 +64,10 @@ class Productor extends Model implements HasMedia
 
     public function localidad() {
         return $this->belongsTo(Localidad::class);
+    }
+
+    public function cervezas()
+    {
+        return $this->hasMany(Cerveza::class);
     }
 }

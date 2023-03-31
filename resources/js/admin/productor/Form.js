@@ -17,7 +17,7 @@ Vue.component('productor-form', {
                 telefono:  '' ,
                 youtube:  ''
             },
-            mediaCollections: ['gallery'],
+            mediaCollections: ['gallery_productor']
         }
     }
 });

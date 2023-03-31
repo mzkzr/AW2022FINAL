@@ -87,7 +87,7 @@
 </div>
 
 @include('brackets/admin-ui::admin.includes.media-uploader', [
-    'mediaCollection' => app(App\Models\Productor::class)->getMediaCollection('gallery'),
-    'media' => $productor->getThumbs200ForCollection('gallery'),
+    'mediaCollection' => app(App\Models\Productor::class)->getMediaCollection('gallery_productor'),
+    'media' => $productor->getThumbs200ForCollection('gallery_productor'),
     'label' => 'Galería'
 ])

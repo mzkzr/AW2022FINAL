@@ -75,7 +75,7 @@
                                         </td>
 
                                         <td>@{{ item.nombre }}</td>
-                                        <td>@{{ item.productor_id }}</td>
+                                        <td>@{{ item.productor.nombre }}</td>
                                         <td>@{{ item.abv }}</td>
                                         <td>@{{ item.ibu }}</td>
                                         

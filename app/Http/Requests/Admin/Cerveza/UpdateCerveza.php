@@ -26,12 +26,12 @@ class UpdateCerveza extends FormRequest
     public function rules(): array
     {
         return [
-            'abv' => ['nullable', 'numeric'],
+            'abv' => ['required', 'numeric'],
             'descripcion' => ['nullable', 'string'],
-            'ibu' => ['nullable', 'integer'],
-            'nombre' => ['sometimes', 'string'],
+            'ibu' => ['required', 'integer'],
+            'nombre' => ['required', 'string'],
             'og' => ['nullable', 'integer'],
-            'productor_id' => ['sometimes', 'string'],
+            'productor' => ['required'],
             'srm' => ['nullable', 'integer'],
             
         ];
@@ -50,5 +50,12 @@ class UpdateCerveza extends FormRequest
         //Add your code for manipulation with request data here
 
         return $sanitized;
+    }
+
+    public function getProductorId(){
+        if ($this->has('productor')){
+            return $this->get('productor')['id'];
+        }
+        return null;
     }
 }

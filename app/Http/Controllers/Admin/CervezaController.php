@@ -9,6 +9,7 @@ use App\Http\Requests\Admin\Cerveza\IndexCerveza;
 use App\Http\Requests\Admin\Cerveza\StoreCerveza;
 use App\Http\Requests\Admin\Cerveza\UpdateCerveza;
 use App\Models\Cerveza;
+use App\Models\Productor;
 use Brackets\AdminListing\Facades\AdminListing;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -40,7 +41,18 @@ class CervezaController extends Controller
             ['abv', 'ibu', 'id', 'nombre', 'og', 'productor_id', 'srm'],
 
             // set columns to searchIn
-            ['descripcion', 'id', 'nombre']
+            ['descripcion', 'id', 'nombre'],
+
+            function ($query) use ($request)
+            {
+                $query->with(['productor']);
+    
+                $query->join('productor', 'productor.id', '=', 'cerveza.productor_id');
+    
+                if($request->has('productor')){
+                    $query->whereIn('productor_id', $request->get('productor'));
+                }
+            }
         );
 
         if ($request->ajax()) {
@@ -65,7 +77,10 @@ class CervezaController extends Controller
     {
         $this->authorize('admin.cerveza.create');
 
-        return view('admin.cerveza.create');
+        return view('admin.cerveza.create', [
+            'cerveza' => new Cerveza(),
+            'productores' => Productor::all()
+        ]);
     }
 
     /**
@@ -77,7 +92,8 @@ class CervezaController extends Controller
     public function store(StoreCerveza $request)
     {
         // Sanitize input
-        $sanitized = $request->getSanitized();
+        $sanitized = $request->validated();
+        $sanitized['productor_id'] = $request->getProductorId();
 
         // Store the Cerveza
         $cerveza = Cerveza::create($sanitized);
@@ -114,9 +130,11 @@ class CervezaController extends Controller
     {
         $this->authorize('admin.cerveza.edit', $cerveza);
 
+        $cerveza->load('productor');
 
         return view('admin.cerveza.edit', [
             'cerveza' => $cerveza,
+            'productores' => Productor::all()
         ]);
     }
 
@@ -130,7 +148,8 @@ class CervezaController extends Controller
     public function update(UpdateCerveza $request, Cerveza $cerveza)
     {
         // Sanitize input
-        $sanitized = $request->getSanitized();
+        $sanitized = $request->validated();
+        $sanitized['productor_id'] = $request->getProductorId();
 
         // Update changed values Cerveza
         $cerveza->update($sanitized);

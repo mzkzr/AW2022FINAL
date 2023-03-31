@@ -2,6 +2,7 @@ import AppForm from '../app-components/Form/AppForm';
 
 Vue.component('cerveza-form', {
     mixins: [AppForm],
+    props: ['productores'],
     data: function() {
         return {
             form: {
@@ -11,9 +12,10 @@ Vue.component('cerveza-form', {
                 nombre:  '' ,
                 og:  '' ,
                 productor_id:  '' ,
-                srm:  '' ,
-                
-            }
+                productor:  '',
+                srm:  '' 
+            },
+            mediaCollections: ['gallery_cerveza']
         }
     }
 

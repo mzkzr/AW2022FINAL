@@ -10,6 +10,7 @@
             <cerveza-form
                 :action="'{{ $cerveza->resource_url }}'"
                 :data="{{ $cerveza->toJson() }}"
+                :productores="{{ $productores->toJson() }}"
                 v-cloak
                 inline-template>
             

@@ -42,7 +42,7 @@ class ProductorController extends Controller
             ['domicilio', 'email', 'facebook', 'id', 'instagram', 'localidad_id', 'nombre', 'provincia_id', 'telefono', 'youtube'],
 
             // set columns to searchIn
-            ['domicilio', 'email', 'facebook', 'id', 'instagram', 'nombre', 'telefono', 'youtube'],
+            ['domicilio', 'email', 'facebook', 'id', 'instagram', 'nombre', 'telefono', 'youtube', 'provincia.nombre', 'localidad.nombre'],
 
             function ($query) use ($request) {
                 $query->with(['provincia']);

@@ -10,6 +10,7 @@
         
         <cerveza-form
             :action="'{{ url('admin/cervezas') }}'"
+            :productores="{{ $productores->toJson() }}"
             v-cloak
             inline-template>
 
