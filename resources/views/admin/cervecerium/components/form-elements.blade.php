@@ -112,6 +112,6 @@
 
 @include('brackets/admin-ui::admin.includes.media-uploader', [
     'mediaCollection' => app(App\Models\Cervecerium::class)->getMediaCollection('gallery_cerveceria'),
-    'media' => $cerveceria->getThumbs200ForCollection('gallery_cerveceria'),
+    'media' => $cervecerium->getThumbs200ForCollection('gallery_cerveceria'),
     'label' => 'Galería'
 ])
