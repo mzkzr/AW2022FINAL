@@ -28,4 +28,12 @@ class PuntoVentum extends Model
     {
         return url('/admin/punto-venta/'.$this->getKey());
     }
+
+    public function cerveza() {
+        return $this->belongsTo(Cerveza::class);
+    }
+
+    public function cerveceria() {
+        return $this->belongsTo(Cervecerium::class);
+    }
 }

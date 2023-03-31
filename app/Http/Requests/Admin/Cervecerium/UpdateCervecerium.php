@@ -31,13 +31,12 @@ class UpdateCervecerium extends FormRequest
             'facebook' => ['nullable', 'string'],
             'horario_atencion' => ['nullable', 'string'],
             'instagram' => ['nullable', 'string'],
-            'localidad_id' => ['sometimes', 'string'],
+            'localidad' => ['required'],
             'nombre' => ['sometimes', 'string'],
-            'productor_id' => ['nullable', 'string'],
-            'provincia_id' => ['sometimes', 'string'],
+            'productor' => ['required'],
+            'provincia' => ['required'],
             'telefono' => ['nullable', 'string'],
-            'youtube' => ['nullable', 'string'],
-            
+            'youtube' => ['nullable', 'string']
         ];
     }
 
@@ -54,5 +53,26 @@ class UpdateCervecerium extends FormRequest
         //Add your code for manipulation with request data here
 
         return $sanitized;
+    }
+
+    public function getProvinciaId(){
+        if ($this->has('provincia')){
+            return $this->get('provincia')['id'];
+        }
+        return null;
+    }
+
+    public function getLocalidadId(){
+        if ($this->has('localidad')){
+            return $this->get('localidad')['id'];
+        }
+        return null;
+    }
+
+    public function getProductorId(){
+        if ($this->has('productor')){
+            return $this->get('productor')['id'];
+        }
+        return null;
     }
 }

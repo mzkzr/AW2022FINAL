@@ -70,4 +70,9 @@ class Productor extends Model implements HasMedia
     {
         return $this->hasMany(Cerveza::class);
     }
+
+    public function cervecerias()
+    {
+        return $this->hasMany(Cervecerium::class);
+    }
 }

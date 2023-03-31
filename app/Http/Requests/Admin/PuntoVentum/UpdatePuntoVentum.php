@@ -26,8 +26,8 @@ class UpdatePuntoVentum extends FormRequest
     public function rules(): array
     {
         return [
-            'cerveza_id' => ['sometimes', 'string'],
-            'cerveceria_id' => ['sometimes', 'string'],
+            'cerveza' => ['required'],
+            'cerveceria' => ['required'],
             'presentaciones' => ['nullable', 'string'],
             
         ];
@@ -46,5 +46,19 @@ class UpdatePuntoVentum extends FormRequest
         //Add your code for manipulation with request data here
 
         return $sanitized;
+    }
+
+    public function getCervezaId(){
+        if ($this->has('cerveza')){
+            return $this->get('cerveza')['id'];
+        }
+        return null;
+    }
+
+    public function getCerveceriaId(){
+        if ($this->has('cerveceria')){
+            return $this->get('cerveceria')['id'];
+        }
+        return null;
     }
 }

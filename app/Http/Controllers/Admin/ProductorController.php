@@ -49,7 +49,7 @@ class ProductorController extends Controller
                 $query->join('provincia', 'provincia.id', '=', 'productor.provincia_id');
     
                 if($request->has('provincia')){
-                    $query->whereIn('provincias_id', $request->get('provincia'));
+                    $query->whereIn('provincia_id', $request->get('provincia'));
                 }
 
                 $query->with(['localidad']);

@@ -59,4 +59,9 @@ class Cerveza extends Model implements HasMedia
     public function productor() {
         return $this->belongsTo(Productor::class);
     }
+
+    public function punto_venta()
+    {
+        return $this->hasMany(PuntoVentum::class);
+    }
 }

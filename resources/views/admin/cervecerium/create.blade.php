@@ -10,6 +10,9 @@
         
         <cervecerium-form
             :action="'{{ url('admin/cerveceria') }}'"
+            :provincias="{{ $provincias->toJson() }}"
+            :localidades="{{ $localidades->toJson() }}"
+            :productores="{{ $productores->toJson() }}"
             v-cloak
             inline-template>
 

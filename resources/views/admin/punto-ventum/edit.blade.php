@@ -10,6 +10,8 @@
             <punto-ventum-form
                 :action="'{{ $puntoVentum->resource_url }}'"
                 :data="{{ $puntoVentum->toJson() }}"
+                :cervezas="{{ $cervezas->toJson() }}"
+                :cervecerias="{{ $cervecerias->toJson() }}"
                 v-cloak
                 inline-template>
             

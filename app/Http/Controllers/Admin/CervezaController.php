@@ -46,7 +46,6 @@ class CervezaController extends Controller
             function ($query) use ($request)
             {
                 $query->with(['productor']);
-    
                 $query->join('productor', 'productor.id', '=', 'cerveza.productor_id');
     
                 if($request->has('productor')){

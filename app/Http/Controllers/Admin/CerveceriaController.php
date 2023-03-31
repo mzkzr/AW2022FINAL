@@ -9,6 +9,9 @@ use App\Http\Requests\Admin\Cervecerium\IndexCervecerium;
 use App\Http\Requests\Admin\Cervecerium\StoreCervecerium;
 use App\Http\Requests\Admin\Cervecerium\UpdateCervecerium;
 use App\Models\Cervecerium;
+use App\Models\Provincium;
+use App\Models\Localidad;
+use App\Models\Productor;
 use Brackets\AdminListing\Facades\AdminListing;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -40,7 +43,30 @@ class CerveceriaController extends Controller
             ['domicilio', 'email', 'facebook', 'horario_atencion', 'id', 'instagram', 'localidad_id', 'nombre', 'productor_id', 'provincia_id', 'telefono', 'youtube'],
 
             // set columns to searchIn
-            ['domicilio', 'email', 'facebook', 'horario_atencion', 'id', 'instagram', 'nombre', 'telefono', 'youtube']
+            ['domicilio', 'email', 'facebook', 'horario_atencion', 'id', 'instagram', 'nombre', 'telefono', 'youtube', 'provincia.nombre', 'localidad.nombre'],
+
+            function ($query) use ($request) {
+                $query->with(['provincia']);
+                $query->join('provincia', 'provincia.id', '=', 'cerveceria.provincia_id');
+    
+                if($request->has('provincia')){
+                    $query->whereIn('provincias_id', $request->get('provincia'));
+                }
+
+                $query->with(['localidad']);
+                $query->join('localidad', 'localidad.id', '=', 'cerveceria.localidad_id');
+
+                if($request->has('localidad')){
+                    $query->whereIn('localidad_id', $request->get('localidad'));
+                }
+
+                $query->with(['productor']);
+                $query->join('productor', 'productor.id', '=', 'cerveceria.productor_id');
+    
+                if($request->has('productor')){
+                    $query->whereIn('productor_id', $request->get('productor'));
+                }
+            }
         );
 
         if ($request->ajax()) {
@@ -65,7 +91,12 @@ class CerveceriaController extends Controller
     {
         $this->authorize('admin.cervecerium.create');
 
-        return view('admin.cervecerium.create');
+        return view('admin.cervecerium.create', [
+            'cerveceria' => new Cervecerium(),
+            'provincias' => Provincium::all(),
+            'localidades' => Localidad::all(),
+            'productores' => Productor::all()
+        ]);
     }
 
     /**
@@ -77,10 +108,13 @@ class CerveceriaController extends Controller
     public function store(StoreCervecerium $request)
     {
         // Sanitize input
-        $sanitized = $request->getSanitized();
+        $sanitized = $request->validated();
+        $sanitized['provincia_id'] = $request->getProvinciaId();
+        $sanitized['localidad_id'] = $request->getLocalidadId();
+        $sanitized['productor_id'] = $request->getProductorId();
 
         // Store the Cervecerium
-        $cervecerium = Cervecerium::create($sanitized);
+        Cervecerium::create($sanitized);
 
         if ($request->ajax()) {
             return ['redirect' => url('admin/cerveceria'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
@@ -114,9 +148,15 @@ class CerveceriaController extends Controller
     {
         $this->authorize('admin.cervecerium.edit', $cervecerium);
 
+        $cervecerium->load('provincia');
+        $cervecerium->load('localidad');
+        $cervecerium->load('productor');
 
         return view('admin.cervecerium.edit', [
             'cervecerium' => $cervecerium,
+            'provincias' => Provincium::all(),
+            'localidades' => Localidad::all(),
+            'productores' => Productor::all()
         ]);
     }
 
@@ -130,7 +170,10 @@ class CerveceriaController extends Controller
     public function update(UpdateCervecerium $request, Cervecerium $cervecerium)
     {
         // Sanitize input
-        $sanitized = $request->getSanitized();
+        $sanitized = $request->validated();
+        $sanitized['provincia_id'] = $request->getProvinciaId();
+        $sanitized['localidad_id'] = $request->getLocalidadId();
+        $sanitized['productor_id'] = $request->getProductorId();
 
         // Update changed values Cervecerium
         $cervecerium->update($sanitized);
