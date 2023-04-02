@@ -21,6 +21,7 @@
         "vue-loader": "^15.9.8"
     },
     "dependencies": {
+        "@fullpage/react-fullpage": "^0.1.38",
         "leaflet": "^1.9.3"
     }
 }
