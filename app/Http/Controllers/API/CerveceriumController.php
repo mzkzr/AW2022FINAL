@@ -23,8 +23,8 @@ class CerveceriumController extends BaseController
                                     ->join('provincia', 'cerveceria.provincia_id', '=', 'provincia.id')
                                     ->join('localidad', 'cerveceria.localidad_id', '=', 'localidad.id')
                                     ->select('cerveceria.*', 'provincia.nombre as provincia', 'localidad.nombre as localidad')
-                                    ->when($provincia_id, function ($query, $provincia_id) {$query->where('provincia_id', $provincia_id);})
-                                    ->when($localidad_id, function ($query, $localidad_id) {$query->where('localidad_id', $localidad_id);})
+                                    ->when($provincia_id, function ($query, $provincia_id) {$query->where('cerveceria.provincia_id', $provincia_id);})
+                                    ->when($localidad_id, function ($query, $localidad_id) {$query->where('cerveceria.localidad_id', $localidad_id);})
                                     ->when($nombre, function ($query, $nombre) {$query->where('nombre', 'like', "%$nombre%");})
                                     ->when($cerveza_id, function ($query, $cerveza_id) {$query->where('punto_venta.cerveza_id', '=', $cerveza_id);})
                                     ->get();

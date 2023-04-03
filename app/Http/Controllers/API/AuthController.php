@@ -44,5 +44,4 @@ class AuthController extends BaseController
    
         return $this->sendResponse($success, 'User creado exitosamente.');
     }
-   
 }
