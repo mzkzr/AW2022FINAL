@@ -20,9 +20,10 @@ class AuthController extends BaseController
             return $this->sendResponse($success, 'Usuario logueado');
         } 
         else{ 
-            return $this->sendError('No autorizado.', ['error'=>'No autorizado']);
+            return $this->sendError('Unauthorised.', ['error'=>'No autorizado']);
         } 
     }
+
     public function signup(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -33,7 +34,7 @@ class AuthController extends BaseController
         ]);
    
         if($validator->fails()){
-            return $this->sendError('Error de validación', $validator->errors());       
+            return $this->sendError('Error validation', $validator->errors());       
         }
    
         $input = $request->all();
@@ -42,6 +43,6 @@ class AuthController extends BaseController
         $success['token'] =  $user->createToken('MyAuthApp')->plainTextToken;
         $success['name'] =  $user->name;
    
-        return $this->sendResponse($success, 'User creado exitosamente.');
+        return $this->sendResponse($success, 'Usuario creado exitosamente');
     }
 }
