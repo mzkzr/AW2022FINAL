@@ -37,7 +37,7 @@ class Cervecerium extends Model implements HasMedia
         'updated_at'
     ];
     
-    protected $appends = ['provincia', 'localidad', 'productor', 'resource_url', 'media_urls'];
+    protected $appends = ['provincia', 'localidad', 'resource_url', 'media_urls'];
 
     /* ************************** MEDIA ************************** */
 
@@ -69,12 +69,6 @@ class Cervecerium extends Model implements HasMedia
     {
         $localidad = Localidad::find($this->localidad_id);
         return $localidad->nombre;
-    }
-
-    public function getProductorAttribute()
-    {
-        $productor = Productor::find($this->productor_id);
-        return $productor->nombre;
     }
 
     public function getMediaUrlsAttribute() {
