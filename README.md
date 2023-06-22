@@ -1,5 +1,12 @@
 # AW2022FINAL
 
+Repositorio principal del backend del proyecto.
+Desarrollado con php utilizando el framework Laravel, y apoyado de Craftable y Vue para la generación del CRUD.
+
+El proyecto provee la capacidad de gestionar una web de información acerca de productores de cerveza artesanal, asi como los comercios que comercializan dichas cervezas, y la informacion necesaria para su correcta identificación y contacto.
+
+El CRUD permite una gestión irrestricta de todos los datos concernientes al proyecto, para los admnistradores correctamente identificados.
+
 - API Reference
 ---------------
 
